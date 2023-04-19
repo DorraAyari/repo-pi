@@ -26,6 +26,10 @@ public class SideBarController implements Initializable {
 
     @FXML
     private Button btnUsers;
+     @FXML
+    private Button btnCours;
+    @FXML
+    private Button btnCoach;
     @FXML
     private AnchorPane mainComponent;
 
@@ -34,6 +38,7 @@ public class SideBarController implements Initializable {
 
         liens = new Button[]{
                 btnUsers,
+            btnCoach
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -54,7 +59,20 @@ public class SideBarController implements Initializable {
         btnUsers.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnUsers, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
+    @FXML
+    private void afficherCoachs(ActionEvent event) {
+        goToLink(Constants.FXML_BACK_DISPLAY_ALL_COACH);
 
+        btnCoach.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnCoach, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+ @FXML
+    private void afficherCours(ActionEvent event) {
+        goToLink(Constants.FXML_BACK_DISPLAY_ALL_COURS);
+
+        btnCours.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnCours, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }    
     private void goToLink(String link) {
         for (Button lien : liens) {
             lien.setTextFill(COLOR_DARK);
