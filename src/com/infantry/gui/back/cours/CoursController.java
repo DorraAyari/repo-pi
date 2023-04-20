@@ -103,6 +103,39 @@ public class CoursController implements Initializable {
             imageIV.setImage(new Image(file.toURI().toString()));
         }
     }
+@FXML
+private void ajouterCours(ActionEvent event) {
+    if (controleDeSaisie()) {
+        String imagePath;
+        createImageFile();
+        imagePath = selectedImagePath.toString();
+        Cours cours = new Cours(nomField.getText(), descriptionField.getText(),
+                Integer.parseInt(nbPlacesTotalField.getText()), Integer.parseInt(reservationField.getText()),
+                imagePath);
+        Salle salle = salleComboBox.getValue();
+        if (salle == null) {
+            // Display an error message and return
+            AlertUtils.makeInformation("Veuillez sélectionner une salle.");
+            return;
+        }
+        cours.setSalle_id(salle);
+
+        Coach coach = coachComboBox.getValue();
+        if (coach == null) {
+            // Display an error message and return
+            AlertUtils.makeInformation("Veuillez sélectionner une coach.");
+            return;
+        }
+        cours.setCours_id(coach);
+
+        if (ServiceCours.getInstance().add(cours)) {
+            AlertUtils.makeSuccessNotification("Cours ajouté avec succés");
+            MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COURS);
+        } else {
+            AlertUtils.makeError("Le cours existe déjà");
+        }
+    }
+}
 
     public void createImageFile() {
         try {
@@ -186,6 +219,9 @@ public class CoursController implements Initializable {
 
             } catch (SQLException e) {
                 e.printStackTrace();
+            
+             } catch (NullPointerException ignored) {
+                System.out.println("NullPointerException");
             }
             // Sélectionner la salle correspondant au cours courant
             salleComboBox.getSelectionModel().select(salleComboBox.getItems().stream()
@@ -199,12 +235,14 @@ public class CoursController implements Initializable {
                     .findFirst()
                     .orElse(null));
 
+       
         } else {
-            topText.setText("Ajouter cours");
+            topText.setText("Ajouter coach");
             btnAjout.setText("Ajouter");
         }
 
     }
+
 
     @FXML
     private void ajouter(ActionEvent event) {

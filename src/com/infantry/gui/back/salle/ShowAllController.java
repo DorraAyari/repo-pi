@@ -80,7 +80,7 @@ public class ShowAllController implements Initializable {
     
 @FXML
 private void ajouter(ActionEvent event) throws IOException {
-    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_SALLE);
+    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_SALLEA);
 }
      public Parent makeSalleModel(Salle salle) {
     Parent parent = null;

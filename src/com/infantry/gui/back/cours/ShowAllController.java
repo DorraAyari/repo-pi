@@ -5,15 +5,22 @@
  */
 package com.infantry.gui.back.cours;
 
+import com.infantry.MainApp;
 import com.infantry.entities.Coach;
 import com.infantry.entities.Cours;
+import com.infantry.entities.Salle;
 import com.infantry.gui.back.MainWindowController;
 import com.infantry.services.ServiceCours;
+import com.infantry.utils.AlertUtils;
 import com.infantry.utils.Constants;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -34,6 +41,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +50,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -52,7 +62,10 @@ public class ShowAllController implements Initializable {
 @FXML
     public VBox mainVBox;
     List<Cours> listCours;
-  @FXML
+
+     
+    
+    @FXML
     public Text topText;
     @FXML
     public Button addButton;
@@ -60,9 +73,12 @@ public class ShowAllController implements Initializable {
     public Button btnAjout;
     // other fields and methods
 
+
     /**
      * Initializes the controller class.
      */
+   
+
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -158,7 +174,7 @@ public class ShowAllController implements Initializable {
 
 @FXML
 private void ajouter(ActionEvent event) throws IOException {
-    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_COURS);
+    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_COURSA);
 }
 
     private void supprimerCours(Cours cours) {
@@ -177,5 +193,5 @@ private void ajouter(ActionEvent event) throws IOException {
         displayData();
     }
     }
-
+  
 }

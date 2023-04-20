@@ -66,7 +66,7 @@ private ScrollPane scrollPane;
 
 @FXML
 private void ajouter(ActionEvent event) throws IOException {
-    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_COACH);
+    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_COACHA);
 }
 
 

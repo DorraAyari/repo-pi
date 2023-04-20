@@ -39,15 +39,18 @@ public class Constants {
         public static String FXML_BACK_DISPLAY_ALL_SALLE ="/com/infantry/gui/back/salle/ShowAll.fxml";
     public static String FXML_BACK_MODEL_SALLE="/com/infantry/gui/back/salle/Model.fxml";
     public static String FXML_BACK_MANAGE_SALLE="/com/infantry/gui/back/salle/Salle.fxml";
-    
+        public static String FXML_BACK_MANAGE_SALLEA="/com/infantry/gui/back/salle/SalleA.fxml";
+
     
     //coachfront
     public static String FXML_FRONT_MY_COCHLIST="/com/infantry/gui/front/coach/ShowAll.fxml";
     public static String FXML_FRONT_MODEL_COACH= "/com/infantry/gui/front/coach/Model.fxml";
-    
+        public static String FXML_BACK_MANAGE_COACHA="/com/infantry/gui/back/coach/CoachA.fxml";
+
     //coursfront
     public static String FXML_FRONT_MY_COURSLIST="/com/infantry/gui/front/cours/ShowAll.fxml";
     public static String FXML_FRONT_MODEL_COURS= "/com/infantry/gui/front/cours/Model.fxml";
+    public static String FXML_BACK_MANAGE_COURSA="/com/infantry/gui/back/cours/CoursA.fxml";
 
     
 

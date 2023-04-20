@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication6.jar" size="3880790" download="eager" />
+    <jar href="JavaFXApplication6.jar" size="6802202" download="eager" />
     <jar href="lib/argon2-jvm-2.10.1.jar" size="414227" download="eager" />
     <jar href="lib/argon2-jvm-nolibs-2.10.1.jar" size="17803" download="eager" />
     <jar href="lib/jna-5.8.0.jar" size="1729586" download="eager" />
