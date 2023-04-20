@@ -40,7 +40,7 @@ public class SideBarController implements Initializable {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach
+            btnCoach,btnCours,btnSalle
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -51,6 +51,9 @@ public class SideBarController implements Initializable {
             Animations.animateButton(lien, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
         }
         btnUsers.setTextFill(Color.WHITE);
+        btnCoach.setTextFill(Color.WHITE);
+        btnCours.setTextFill(Color.WHITE);
+        btnSalle.setTextFill(Color.WHITE);
 
     }
 

@@ -30,7 +30,30 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-
+ <Button fx:id="btnCoach" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#showCoach" text="Coach" textFill="WHITE">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+         <Button fx:id="btnCours" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#showCours" text="Cours" textFill="WHITE">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
     </HBox>
     <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
             style="-fx-background-color: red;"

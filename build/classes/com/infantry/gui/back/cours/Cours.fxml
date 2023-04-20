@@ -21,7 +21,7 @@
             </font>
         </Text>
     </StackPane>
-    <VBox layoutX="50.0" layoutY="80.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+    <VBox layoutX="70.0" layoutY="80.0" prefHeight="441.0" prefWidth="586.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
 
         <HBox>
 
@@ -37,7 +37,7 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <TextField fx:id="nomField" alignment="TOP_LEFT" promptText="Saisir nom" styleClass="form-control" />
+                <TextField fx:id="nomField" alignment="TOP_LEFT" prefHeight="16.0" prefWidth="566.0" promptText="Saisir nom" styleClass="form-control" />
             </VBox>
 
 
@@ -45,7 +45,7 @@
 
         <HBox>
 
-            <VBox prefHeight="115.0" prefWidth="626.0" spacing="5" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="99.0" prefWidth="586.0" spacing="5" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -58,12 +58,12 @@
                     </VBox.margin>
                 </Text>
                 <HBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="566.0">
-                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#chooseImage" prefHeight="28.0" prefWidth="381.0" styleClass="form-control" text="Choisir une image" HBox.hgrow="ALWAYS">
+                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#chooseImage" prefHeight="22.0" prefWidth="476.0" styleClass="form-control" text="Choisir une image" HBox.hgrow="ALWAYS">
                         <HBox.margin>
                             <Insets bottom="20.0" right="20.0" top="20.0" />
                         </HBox.margin>
                     </Button>
-                    <ImageView fx:id="imageIV" fitHeight="67.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="imageIV" fitHeight="60.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                         <HBox.margin>
                             <Insets bottom="10.0" left="10.0" top="10.0" />
                         </HBox.margin>
@@ -80,7 +80,7 @@
             
         <HBox>
   
-            <VBox prefHeight="100.0" prefWidth="586.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="61.0" prefWidth="586.0" spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -92,12 +92,12 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <TextField fx:id="descriptionField" prefHeight="64.0" prefWidth="566.0" promptText="Saisir description" styleClass="form-control" />
+                <TextField fx:id="descriptionField" prefHeight="32.0" prefWidth="566.0" promptText="Saisir description" styleClass="form-control" />
             </VBox>
 
            
         </HBox>
-        <HBox prefHeight="92.0" prefWidth="587.0">
+        <HBox prefHeight="62.0" prefWidth="586.0">
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
@@ -133,7 +133,7 @@
 
         </HBox>
     
-        <HBox>
+        <HBox prefHeight="68.0" prefWidth="586.0">
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -165,13 +165,16 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <ComboBox fx:id="salleComboBox" layoutX="211.0" layoutY="167.0" prefWidth="150.0" promptText="Sélectionner une salle" />
-     
+                <ComboBox fx:id="salleComboBox" layoutX="211.0" layoutY="167.0" prefHeight="28.0" prefWidth="174.0" promptText="Sélectionner une salle" styleClass="form-control">
+     <VBox.margin>
+                        <Insets left="5.0" />
+                    </VBox.margin>
+                </ComboBox>
             </VBox>
 
 
         </HBox>
     </VBox>
     
-    <Button fx:id="btnAjout" layoutX="265.0" layoutY="434.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="166.0" styleClass="success-button" text="manipulation" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+    <Button fx:id="btnAjout" layoutX="260.0" layoutY="590.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="28.0" prefWidth="166.0" styleClass="success-button" text="manipulation" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
 </AnchorPane>

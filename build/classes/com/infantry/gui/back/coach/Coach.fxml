@@ -24,7 +24,7 @@
 
         <HBox>
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox spacing="05.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -40,7 +40,7 @@
             </VBox>
 
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox spacing="05.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -60,7 +60,7 @@
 
         <HBox>
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox spacing="05.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -72,13 +72,13 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <HBox alignment="CENTER_LEFT">
+                <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="568.0">
                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#chooseImage" styleClass="form-control" text="Choisir une image" HBox.hgrow="ALWAYS">
                         <HBox.margin>
                             <Insets bottom="20.0" right="20.0" top="20.0" />
                         </HBox.margin>
                     </Button>
-                    <ImageView fx:id="imageIV" fitHeight="83.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="imageIV" fitHeight="58.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                         <HBox.margin>
                             <Insets bottom="10.0" left="10.0" top="10.0" />
                         </HBox.margin>
@@ -95,7 +95,7 @@
             
         <HBox>
   
-            <VBox prefHeight="64.0" prefWidth="588.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="05.0" prefWidth="588.0" spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -129,7 +129,7 @@
                 <TextField fx:id="heightField" alignment="TOP_LEFT" promptText="Saisir taille" styleClass="form-control" />
             </VBox>
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox spacing="05.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
@@ -149,11 +149,11 @@
         </HBox>
         <HBox>
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="05.0" prefWidth="588.0" spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo :">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
@@ -162,11 +162,11 @@
                     </VBox.margin>
                 </Text>
                
-                <TextField fx:id="descriptionField" promptText="Saisir age" styleClass="form-control" />
+                <TextField fx:id="descriptionField" promptText="Saisir une description" styleClass="form-control" />
 
             </VBox>
         </HBox>
 
     </VBox>
- <Button fx:id="btnAjout" layoutX="260.0" layoutY="548.0" mnemonicParsing="false" onAction="#modifier" prefHeight="41.0" prefWidth="168.0" styleClass="success-button" text="manipulation" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+ <Button fx:id="btnAjout" layoutX="260.0" layoutY="591.0" mnemonicParsing="false" onAction="#modifier" prefHeight="28.0" prefWidth="168.0" styleClass="success-button" text="manipulation" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
 </AnchorPane>

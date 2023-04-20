@@ -43,7 +43,7 @@
                     </font>
                 </Text>
                
-                <Text fx:id="nomCoachText" text="Reservation" wrappingWidth="190">
+                <Text fx:id="nomCoachText" text="Nom coach " wrappingWidth="190">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -55,17 +55,17 @@
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
                
-                <Text fx:id="reservationText" text="Reservation" wrappingWidth="190">
+                <Text fx:id="reservationText" text="Reservation" wrappingWidth="166.0">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
-                <Text fx:id="nb_places_totalText" text="Places Total" wrappingWidth="190">
+                <Text fx:id="nb_places_totalText" text="Places Total" wrappingWidth="171.0">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
-                <Text fx:id="nomSalleText" text="Places Total" wrappingWidth="190">
+                <Text fx:id="nomSalleText" text="Nom salle" wrappingWidth="156.0">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -80,7 +80,7 @@
             </VBox>
 
 
-            <VBox>
+            <VBox prefHeight="160.0" prefWidth="104.0">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
