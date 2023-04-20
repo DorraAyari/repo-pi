@@ -5,6 +5,8 @@
  */
 package com.infantry.entities;
 
+import java.util.List;
+
 /**
  *
  * @author dorraayari
@@ -27,12 +29,20 @@ public class Salle {
     public Salle() {
     }
 
+    public Salle(List<String> salle_nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public Salle(String nom) {
+        this.nom = nom;
     }
 
     public String getDescription() {
@@ -52,8 +62,9 @@ public class Salle {
     }
 
     @Override
-    public String toString() {
-        return "Salle{" + "id=" + id + ", nom=" + nom + ", description=" + description + '}';
-    }
+public String toString() {
+    return this.getNom();
+}
+
     
 }

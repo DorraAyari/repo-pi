@@ -42,6 +42,12 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
+               
+                <Text fx:id="nomCoachText" text="Reservation" wrappingWidth="190">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Text>
 
             </VBox>
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
@@ -59,23 +65,17 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
+                <Text fx:id="nomSalleText" text="Places Total" wrappingWidth="190">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Text>
 
             </VBox>
      <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
-               
-                <Text fx:id="nomCoachText" text="Reservation" wrappingWidth="190">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Text>
-                <Text fx:id="nomSalleText" text="Places Total" wrappingWidth="190">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Text>
 
             </VBox>
 

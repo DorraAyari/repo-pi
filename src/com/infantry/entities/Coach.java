@@ -5,6 +5,8 @@
  */
 package com.infantry.entities;
 
+import java.util.List;
+
 /**
  *
  * @author dorraayari
@@ -59,6 +61,9 @@ private String image;
         this.id = id;
           this.image = image;
     }
+
+    public Coach(List<String> coach_nom) {
+  this.nom = nom;    }
 
    
 
@@ -126,10 +131,11 @@ private String image;
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Coach{" + "nom=" + nom + ", description=" + description + ", weight=" + weight + ", height=" + height + ", occupation=" + occupation + ", age=" + age + ", id=" + id + ", image=" + image + '}';
-    }
+   @Override
+public String toString() {
+    return this.getNom();
+}
+
 
 
 

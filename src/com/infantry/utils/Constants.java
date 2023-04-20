@@ -28,11 +28,19 @@ public class Constants {
     public static final String FXML_BACK_DISPLAY_ALL_COACH = "/com/infantry/gui/back/coach/ShowAll.fxml";
     public static final String FXML_BACK_MODEL_COACH = "/com/infantry/gui/back/coach/Model.fxml";
     public static String FXML_BACK_MANAGE_COACH="/com/infantry/gui/back/coach/Coach.fxml";
+    
+        //cours
+
     public static String FXML_BACK_MODEL_COURS= "/com/infantry/gui/back/cours/Model.fxml";
     public static String FXML_BACK_MANAGE_COURS="/com/infantry/gui/back/cours/Cours.fxml";
     public static String FXML_BACK_DISPLAY_ALL_COURS = "/com/infantry/gui/back/cours/ShowAll.fxml";
 
+    //salle 
+        public static String FXML_BACK_DISPLAY_ALL_SALLE ="/com/infantry/gui/back/salle/ShowAll.fxml";
+    public static String FXML_BACK_MODEL_SALLE="/com/infantry/gui/back/salle/Model.fxml";
+    public static String FXML_BACK_MANAGE_SALLE="/com/infantry/gui/back/salle/Salle.fxml";
 
+    
 
     
 }

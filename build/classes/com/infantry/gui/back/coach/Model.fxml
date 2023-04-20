@@ -42,6 +42,16 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
+                <Text fx:id="heightText" text="Numero" wrappingWidth="190">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Text>
+                <Text fx:id="ageText" text="Roles" wrappingWidth="171.0">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Text>
 
             </VBox>
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
@@ -58,28 +68,11 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
-                <Text fx:id="heightText" text="Numero" wrappingWidth="190">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Text>
-
-            </VBox>
-  <VBox prefHeight="160.0" prefWidth="133.0" spacing="10.0" HBox.hgrow="ALWAYS">
-                <HBox.margin>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                </HBox.margin>
                 <Text fx:id="occupationText" text="Roles" wrappingWidth="171.0">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Text>
-                <Text fx:id="ageText" text="Roles" wrappingWidth="171.0">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Text>
-               
 
             </VBox>
 
@@ -97,6 +90,13 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </VBox.margin>
                 </Button>
+            </VBox>
+  <VBox prefHeight="160.0" prefWidth="133.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </HBox.margin>
+               
+
             </VBox>
 
         </HBox>

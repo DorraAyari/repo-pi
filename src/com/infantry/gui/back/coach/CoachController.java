@@ -39,9 +39,10 @@ import javafx.stage.FileChooser;
  * @author dorraayari
  */
 public class CoachController implements Initializable {
+
     @FXML
     public Button btnAjout;
- @FXML
+    @FXML
     public TextField nomField;
     @FXML
     public TextField occupationField;
@@ -61,10 +62,11 @@ public class CoachController implements Initializable {
 
     Path selectedImagePath;
     boolean imageEdited;
+
     /**
      * Initializes the controller class.
      */
-        @FXML
+    @FXML
     public void chooseImage(ActionEvent actionEvent) {
 
         final FileChooser fileChooser = new FileChooser();
@@ -84,38 +86,39 @@ public class CoachController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-   @Override
-public void initialize(URL url, ResourceBundle rb) {
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
         currentCoach = ShowAllController.currentCoach;
 
-    if (currentCoach != null) {
-        topText.setText("Modifier coach");
-        btnAjout.setText("Modifier");
+        if (currentCoach != null) {
+            topText.setText("Modifier coach");
+            btnAjout.setText("Modifier");
 
-        try {
-            nomField.setText(currentCoach.getNom());
-            occupationField.setText(currentCoach.getOccupation());
-            descriptionField.setText(currentCoach.getDescription());
-ageField.setText(String.valueOf(currentCoach.getAge()));
-            heightField.setText(currentCoach.getHeight());
-                        weightField.setText(currentCoach.getWeight());
+            try {
+                nomField.setText(currentCoach.getNom());
+                occupationField.setText(currentCoach.getOccupation());
+                descriptionField.setText(currentCoach.getDescription());
+                ageField.setText(String.valueOf(currentCoach.getAge()));
+                heightField.setText(currentCoach.getHeight());
+                weightField.setText(currentCoach.getWeight());
 
-            selectedImagePath = FileSystems.getDefault().getPath(currentCoach.getImage());
-            if (selectedImagePath.toFile().exists()) {
-                imageIV.setImage(new Image(selectedImagePath.toUri().toString()));
+                selectedImagePath = FileSystems.getDefault().getPath(currentCoach.getImage());
+                if (selectedImagePath.toFile().exists()) {
+                    imageIV.setImage(new Image(selectedImagePath.toUri().toString()));
+                }
+
+            } catch (NullPointerException ignored) {
+                System.out.println("NullPointerException");
             }
-
-        } catch (NullPointerException ignored) {
-            System.out.println("NullPointerException");
+        } else {
+            topText.setText("Ajouter coach");
+            btnAjout.setText("Ajouter");
         }
-    } else {
-        topText.setText("Ajouter coach");
-        btnAjout.setText("Ajouter");
     }
-}
-       @FXML
+
+    @FXML
     private void modifier(ActionEvent event) {
 
         if (controleDeSaisie()) {
@@ -127,108 +130,96 @@ ageField.setText(String.valueOf(currentCoach.getAge()));
                 createImageFile();
                 imagePath = selectedImagePath.toString();
             }
-  
- 
+
             Coach coach = new Coach(
                     nomField.getText(),
-                     descriptionField.getText(),
-                        weightField.getText(),
-                      heightField.getText(),
+                    descriptionField.getText(),
+                    weightField.getText(),
+                    heightField.getText(),
                     occupationField.getText(),
-                   
-                   
-                Integer.parseInt(ageField.getText()),
-
-
+                    Integer.parseInt(ageField.getText()),
                     imagePath
             );
 
-                if (currentCoach == null) {
-        if (CoachService.getInstance().add(coach)) {
-            AlertUtils.makeSuccessNotification("Coach ajouté avec succés");
-            MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COACH);
-        } else {
-            AlertUtils.makeError("Le coach existe déjà");
-        }
-    } else {
-        coach.setId(currentCoach.getId());
-                coach.setNom(currentCoach.getNom());
-                coach.setDescription(currentCoach.getDescription());
-                coach.setWeight(currentCoach.getWeight());
-                 coach.setHeight(currentCoach.getHeight());
+            if (currentCoach == null) {
+                if (CoachService.getInstance().add(coach)) {
+                    AlertUtils.makeSuccessNotification("Coach ajouté avec succés");
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COACH);
+                } else {
+                    AlertUtils.makeError("Le coach existe déjà");
+                }
+            } else {
+                coach.setId(currentCoach.getId());
+                coach.setNom(nomField.getText());
+                coach.setDescription(descriptionField.getText());
+                coach.setWeight(weightField.getText());
+                coach.setHeight(heightField.getText());
 
-                coach.setOccupation(currentCoach.getOccupation());
-                coach.setAge(currentCoach.getAge());
+                coach.setOccupation(occupationField.getText());
+                coach.setAge(Integer.parseInt(ageField.getText()));
 
-        if (CoachService.getInstance().edit(coach)) {
-            AlertUtils.makeSuccessNotification("Coach modifié avec succés");
-            ShowAllController.currentCoach = null;
-            MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COACH);
-        } else {
-            AlertUtils.makeError("Le coach existe déjà");
-        }
-    }
+                if (CoachService.getInstance().edit(coach)) {
+                    AlertUtils.makeSuccessNotification("Coach modifié avec succés");
+                    ShowAllController.currentCoach = null;
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COACH);
+                } else {
+                    AlertUtils.makeError("Le coach existe déjà");
+                }
+            }
 
-            
             if (selectedImagePath != null) {
                 createImageFile();
             }
         }
     }
 
-     private boolean controleDeSaisie() {
-
+    private boolean controleDeSaisie() {
 
         if (nomField.getText().isEmpty()) {
             AlertUtils.makeInformation("nom ne doit pas etre vide");
             return false;
         }
-       
 
         if (descriptionField.getText().isEmpty()) {
             AlertUtils.makeInformation("description ne doit pas etre vide");
             return false;
         }
 
-
         if (weightField.getText().isEmpty()) {
             AlertUtils.makeInformation("weight ne doit pas etre vide");
             return false;
         }
-
 
         if (heightField.getText().isEmpty()) {
             AlertUtils.makeInformation("height ne doit pas etre vide");
             return false;
         }
 
-
         if (occupationField.getText().isEmpty()) {
             AlertUtils.makeInformation("occupation ne doit pas etre vide");
             return false;
         }
-                if (ageField.getText().isEmpty()) {
+        if (ageField.getText().isEmpty()) {
 
             AlertUtils.makeInformation("age ne doit pas etre vide");
             return false;
-                }
-    // Vérifier si l'âge est un nombre entier positif
-    try {
-        int age = Integer.parseInt(ageField.getText());
-        if (age < 0) {
-            throw new NumberFormatException();
         }
-    } catch (NumberFormatException e) {
-              AlertUtils.makeInformation("Veuillez entrer un nombre entier positif pour l'âge.");
+        // Vérifier si l'âge est un nombre entier positif
+        try {
+            int age = Integer.parseInt(ageField.getText());
+            if (age < 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            AlertUtils.makeInformation("Veuillez entrer un nombre entier positif pour l'âge.");
 
-        return false;
-    }
+            return false;
+        }
 
         if (selectedImagePath == null) {
             AlertUtils.makeInformation("Veuillez choisir une image");
             return false;
         }
-
 
         return true;
     }

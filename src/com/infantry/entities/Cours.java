@@ -5,6 +5,14 @@
  */
 package com.infantry.entities;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author dorraayari
@@ -95,6 +103,15 @@ public Cours(int id,String nom, String image, String description, int nb_places_
         this.salle_id = salle_id;
         this.coach_id = cours_id;
     }
+      public Cours(String nom, String description, int nbPlacesTotal, int reservation, String image) {
+            
+        this.nom = nom;
+        this.image = image;
+        this.description = description;
+        this.nb_places_total = nbPlacesTotal;
+        this.reservation = reservation;
+       
+    }
     public Cours(int id, int nb_places_total, int reservation, String nom, String image, String description, String coach_nom, String salle_nom) {
         this.id = id;
         this.nb_places_total = nb_places_total;
@@ -126,6 +143,40 @@ public Cours( String nom,   String description,int nb_places_total, int reservat
         this.description = description;
      
     }
+public List<String> getCoach_nom() {
+    List<String> coachNoms = new ArrayList<>();
+    try {
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Infantry", "root", "root");
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT nom FROM coach");
+        while (rs.next()) {
+            coachNoms.add(rs.getString("nom"));
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return coachNoms;
+}
+public List<String> getSalle_nom() {
+    List<String> salleNoms = new ArrayList<>();
+    try {
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Infantry", "root", "root");
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT nom FROM salle");
+        while (rs.next()) {
+            salleNoms.add(rs.getString("nom"));
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return salleNoms;
+}
 
 public Cours(int id,String nom, String description, Salle salle_id, String coach_nom,String image) {
         this.nom = nom;
@@ -204,15 +255,8 @@ public Cours(int id,String nom, String description, Salle salle_id, String coach
         this.nom = nom;
     }
 
-   public String getCoach_nom() {
-    return coach_nom;
-}
-  public String setCoach_nom(String coach_nom) {
-    return this.coach_nom=coach_nom;
-}
-public String getSalle_nom() {
-    return salle_nom;
-}
+
+
 
 public String setSalle_nom(String salle_nom) {
     return this.salle_nom=salle_nom;
@@ -240,5 +284,7 @@ public String setSalle_nom(String salle_nom) {
     public void setCours_id(Coach cours_id) {
         this.coach_id = cours_id;
     }
+
+   
     
 }

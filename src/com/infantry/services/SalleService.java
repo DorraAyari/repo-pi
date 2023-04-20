@@ -155,20 +155,18 @@ public void delete(int salleId) {
             System.out.println("Error (add) salle : " + exception.getMessage());
         }
         return false;
-    }
+  }
 public boolean edit(Salle salle) {
-    
-String request = "UPDATE `salle` SET `nom` = ?, `description` = ? WHERE `id` = ?";
-
+    String request = "UPDATE salle SET nom = ?, description = ? WHERE id = ?";
 
     try {
         preparedStatement = conn.prepareStatement(request);
         preparedStatement.setString(1, salle.getNom());
         preparedStatement.setString(2, salle.getDescription());
-       
-        preparedStatement.setInt(3, salle.getId());
+              preparedStatement.setInt(3, salle.getId());
+
         preparedStatement.executeUpdate();
-        System.out.println("Salle edited");
+        System.out.println("salle edited");
         return true;
     } catch (SQLException exception) {
         System.out.println("Error (edit) salle : " + exception.getMessage());

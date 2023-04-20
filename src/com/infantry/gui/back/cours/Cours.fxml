@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane styleClass="background-white" stylesheets="@../../../utils/MainStyle.css"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.infantry.gui.back.cours.CoursController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="625.0" prefWidth="686.0" styleClass="background-white" stylesheets="@../../../utils/MainStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infantry.gui.back.cours.CoursController">
     <StackPane layoutY="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter cours">
+        <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter cours" wrappingWidth="149.5224609375">
             <font>
-                <Font name="Arial Bold" size="23.0"/>
+                <Font name="Arial Bold" size="23.0" />
             </font>
         </Text>
     </StackPane>
-    <VBox layoutX="50.0" layoutY="80.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0"
-          AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+    <VBox layoutX="50.0" layoutY="80.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
 
         <HBox>
 
@@ -41,31 +45,29 @@
 
         <HBox>
 
-            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="115.0" prefWidth="626.0" spacing="5" HBox.hgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo :">
                     <font>
-                        <Font name="Arial" size="18.0"/>
+                        <Font name="Arial" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="5.0"/>
+                        <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <HBox alignment="CENTER_LEFT">
-                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#chooseImage"
-                            styleClass="form-control" text="Choisir une image" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="566.0">
+                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#chooseImage" prefHeight="28.0" prefWidth="381.0" styleClass="form-control" text="Choisir une image" HBox.hgrow="ALWAYS">
                         <HBox.margin>
-                            <Insets bottom="20.0" right="20.0" top="20.0"/>
+                            <Insets bottom="20.0" right="20.0" top="20.0" />
                         </HBox.margin>
                     </Button>
-                    <ImageView fx:id="imageIV" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true"
-                               preserveRatio="true">
+                    <ImageView fx:id="imageIV" fitHeight="67.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                         <HBox.margin>
-                            <Insets bottom="10.0" left="10.0" top="10.0"/>
+                            <Insets bottom="10.0" left="10.0" top="10.0" />
                         </HBox.margin>
-                        <Image url="@../../../images/mdi/image-placeholder.png"/>
+                        <Image url="@../../../images/mdi/image-placeholder.png" />
                     </ImageView>
                 </HBox>
 
@@ -78,11 +80,11 @@
             
         <HBox>
   
-            <VBox prefHeight="64.0" prefWidth="588.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="100.0" prefWidth="586.0" spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age :">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
@@ -90,7 +92,7 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <TextField fx:id="descriptionField" promptText="Saisir description" styleClass="form-control" />
+                <TextField fx:id="descriptionField" prefHeight="64.0" prefWidth="566.0" promptText="Saisir description" styleClass="form-control" />
             </VBox>
 
            
@@ -101,7 +103,7 @@
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Taille  :">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de reservation  :">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
@@ -109,14 +111,14 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <TextField fx:id="reservationField" alignment="TOP_LEFT" promptText="Saisir nb reservation" styleClass="form-control" />
+                <TextField fx:id="reservationField" alignment="TOP_LEFT" prefHeight="28.0" prefWidth="155.0" promptText="Saisir nb reservation" styleClass="form-control" />
             </VBox>
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Poids :">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Places disponibles :">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
@@ -132,6 +134,24 @@
         </HBox>
     
         <HBox>
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du coach :">
+                    <font>
+                        <Font name="Arial" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0" />
+                    </VBox.margin>
+                </Text>
+                <ComboBox fx:id="coachComboBox" promptText="Sélectionner un coach" styleClass="form-control">
+                    <VBox.margin>
+                        <Insets left="5.0" />
+                    </VBox.margin>
+                </ComboBox>
+            </VBox>
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <padding>
@@ -145,30 +165,13 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </Text>
-                <ComboBox fx:id="salleComboBox" layoutX="170" layoutY="81" prefHeight="25" prefWidth="150"  styleClass="form-control" />
+                <ComboBox fx:id="salleComboBox" layoutX="211.0" layoutY="167.0" prefWidth="150.0" promptText="Sélectionner une salle" />
+     
             </VBox>
 
-
-            <VBox prefHeight="81.0" prefWidth="165.0" spacing="10.0" HBox.hgrow="ALWAYS">
-                <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                </padding>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coach :">
-                    <font>
-                        <Font name="Arial" size="18.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets left="5.0" />
-                    </VBox.margin>
-                </Text>
-                <ComboBox fx:id="coachComboBox" layoutX="170" layoutY="122" prefHeight="25" prefWidth="150" promptText="NomCoach" styleClass="form-control" />
-            </VBox>
 
         </HBox>
     </VBox>
     
-    <Button fx:id="btnAjout" layoutX="265.0" layoutY="434.0" mnemonicParsing="false" onAction="#ajouter"
-            prefHeight="51.0" prefWidth="150.0" styleClass="success-button" text="manipulation" textAlignment="CENTER"
-            textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="260.0"
-            AnchorPane.rightAnchor="260.0"/>
+    <Button fx:id="btnAjout" layoutX="265.0" layoutY="434.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="166.0" styleClass="success-button" text="manipulation" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
 </AnchorPane>

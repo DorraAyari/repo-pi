@@ -113,155 +113,168 @@ public class CoursController implements Initializable {
             e.printStackTrace();
         }
     }
-    public List<String> getCoach_nom() {
-    List<String> coachNoms = new ArrayList<>();
-    try {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Infantry", "root", "root");
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT nom FROM coach");
-        while (rs.next()) {
-            coachNoms.add(rs.getString("nom"));
-        }
-        rs.close();
-        stmt.close();
-        conn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return coachNoms;
-}
-public List<String> getSalle_nom() {
-    List<String> salleNoms = new ArrayList<>();
-    try {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Infantry", "root", "root");
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT nom FROM salle");
-        while (rs.next()) {
-            salleNoms.add(rs.getString("nom"));
-        }
-        rs.close();
-        stmt.close();
-        conn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return salleNoms;
-}
-@Override
-public void initialize(URL url, ResourceBundle rb) {
-    
-    SalleService salleService = new SalleService();
-    ObservableList<Salle> salleList = FXCollections.observableArrayList(salleService.readAll());
-    Collections.sort(salleList, Comparator.comparing(Salle::getNom));
-    salleComboBox.setItems(salleList);
-
-    CoachService coachService = new CoachService();
-    ObservableList<Coach> coachList = FXCollections.observableArrayList(coachService.readAll());
-    Collections.sort(coachList, Comparator.comparing(Coach::getNom));
-    coachComboBox.setItems(coachList);
-
-    salleComboBox.setConverter(new StringConverter<Salle>() {
-    @Override
-    public String toString(Salle salle) {
-        return salle.getNom();
-    }
 
     @Override
-    public Salle fromString(String nom) {
-        return null;
-    }
-});
-    coachComboBox.setConverter(new StringConverter<Coach>() {
-        @Override
-        public String toString(Coach coach) {
-            return coach.getNom();
-        }
-
-        @Override
-        public Coach fromString(String nom) {
-            return coachList.stream().filter(coach -> coach.getNom().equals(nom)).findFirst().orElse(null);
-        }
-    });
-
-
-    currentCours = ShowAllController.currentCours;
-
-    if (currentCours != null) {
-        topText.setText("Modifier cours");
-        btnAjout.setText("Modifier");
-
-        try {
-            nomField.setText(currentCours.getNom());
-            descriptionField.setText(currentCours.getDescription());
-            nbPlacesTotalField.setText(String.valueOf(currentCours.getNbPlacesTotal()));
-            reservationField.setText(String.valueOf(currentCours.getReservation()));
-
-            salleComboBox.setValue(currentCours.getSalle());
-            coachComboBox.setValue(currentCours.getCoach());
-
-            selectedImagePath = FileSystems.getDefault().getPath(currentCours.getImage());
-            if (selectedImagePath.toFile().exists()) {
-                imageIV.setImage(new Image(selectedImagePath.toUri().toString()));
+    public void initialize(URL url, ResourceBundle rb) {
+        SalleService salleService = new SalleService();
+        ObservableList<Salle> salleList = FXCollections.observableArrayList(salleService.readAll());
+        Collections.sort(salleList, Comparator.comparing(Salle::getNom)); // trier par nom
+        salleComboBox.setItems(salleList);
+        salleComboBox.setConverter(new StringConverter<Salle>() {
+            @Override
+            public String toString(Salle salle) {
+                return salle.getNom(); // retourne le nom de la salle
             }
 
-        } catch (NullPointerException ignored) {
-            System.out.println("NullPointerException");
-        }
-    } else {
-        topText.setText("Ajouter cours");
-        btnAjout.setText("Ajouter");
-    }
-}
+            @Override
+            public Salle fromString(String nom) {
+                // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
+                return null;
+            }
+        });
 
+        CoachService coachService = new CoachService();
+        ObservableList<Coach> coachList = FXCollections.observableArrayList(coachService.readAll());
+        Collections.sort(coachList, Comparator.comparing(Coach::getNom)); // trier par nom
+        coachComboBox.setItems(coachList);
+        coachComboBox.setConverter(new StringConverter<Coach>() {
+            @Override
+            public String toString(Coach coach) {
+                return coach.getNom(); // retourne le nom du coach
+            }
 
-@FXML
-private void ajouter(ActionEvent event) {
-    if (controleDeSaisie()) {
-        String imagePath;
-        if (imageEdited) {
-            imagePath = currentCours.getImage();
+            @Override
+            public Coach fromString(String nom) {
+                // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
+                return null;
+            }
+        });
+
+        currentCours = ShowAllController.currentCours;
+
+        if (currentCours != null) {
+            topText.setText("Modifier cours");
+            btnAjout.setText("Modifier");
+            List<String> salleNoms = new ArrayList<>();
+            List<String> coachNoms = new ArrayList<>();
+
+            try {
+                nomField.setText(currentCours.getNom());
+                descriptionField.setText(currentCours.getDescription());
+                nbPlacesTotalField.setText(String.valueOf(currentCours.getNbPlacesTotal()));
+                reservationField.setText(String.valueOf(currentCours.getReservation()));
+
+                selectedImagePath = FileSystems.getDefault().getPath(currentCours.getImage());
+                if (selectedImagePath.toFile().exists()) {
+                    imageIV.setImage(new Image(selectedImagePath.toUri().toString()));
+                }
+
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Infantry", "root", "root");
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT c.*, s.nom as salle_nom, co.nom as coach_nom "
+                        + "FROM cours c "
+                        + "JOIN salle s ON c.salle_id = s.id "
+                        + "JOIN coach co ON c.coach_id = co.id "
+                        + "WHERE c.id = " + currentCours.getId());
+                while (rs.next()) {
+                    salleNoms.add(rs.getString("salle_nom"));
+                    coachNoms.add(rs.getString("coach_nom"));
+                }
+                rs.close();
+                stmt.close();
+                conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            // Sélectionner la salle correspondant au cours courant
+            salleComboBox.getSelectionModel().select(salleComboBox.getItems().stream()
+                    .filter(salle -> salleNoms.contains(salle.getNom()))
+                    .findFirst()
+                    .orElse(null));
+
+// Sélectionner le coach correspondant au cours courant
+            coachComboBox.getSelectionModel().select(coachComboBox.getItems().stream()
+                    .filter(coach -> coachNoms.contains(coach.getNom()))
+                    .findFirst()
+                    .orElse(null));
+
         } else {
-            createImageFile();
-            imagePath = selectedImagePath.toString();
+            topText.setText("Ajouter cours");
+            btnAjout.setText("Ajouter");
         }
 
-        Cours cours = new Cours(nomField.getText(), descriptionField.getText(),
-                Integer.parseInt(nbPlacesTotalField.getText()), Integer.parseInt(reservationField.getText()),
-                salleComboBox.getValue(), coachComboBox.getValue(), imagePath);
+    }
 
-       
-        if (currentCours == null) {
-            if (ServiceCours.getInstance().add(cours)) {
-                AlertUtils.makeSuccessNotification("Cours ajouté avec succés");
-                MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COURS);
+    @FXML
+    private void ajouter(ActionEvent event) {
+        if (controleDeSaisie()) {
+            String imagePath;
+            if (imageEdited) {
+                imagePath = currentCours.getImage();
             } else {
-                AlertUtils.makeError("Le cours existe déjà");
-            }
-        } else {
-            cours.setId(currentCours.getId());
-            if (ServiceCours.getInstance().edit(cours)) {
-                AlertUtils.makeSuccessNotification("Cours modifié avec succés");
-                MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COURS);
-            } else {
-                AlertUtils.makeError("Erreur lors de la modification du cours");
-            }
-
-            if (selectedImagePath != null) {
                 createImageFile();
+                imagePath = selectedImagePath.toString();
+            }
+
+            Cours cours = new Cours(nomField.getText(), descriptionField.getText(),
+                    Integer.parseInt(nbPlacesTotalField.getText()), Integer.parseInt(reservationField.getText()),
+                    imagePath);
+            Salle salle = salleComboBox.getValue();
+            if (salle == null) {
+                // Display an error message and return
+                AlertUtils.makeInformation("Veuillez sélectionner une salle.");
+
+                return;
+            }
+            cours.setSalle_id(salle);
+
+            Coach coach = coachComboBox.getValue();
+            if (coach == null) {
+                // Display an error message and return
+                AlertUtils.makeInformation("Veuillez sélectionner une coach.");
+                return;
+            }
+            cours.setCours_id(coach);
+
+            if (currentCours == null) {
+                if (ServiceCours.getInstance().add(cours)) {
+                    AlertUtils.makeSuccessNotification("Cours ajouté avec succés");
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COURS);
+                } else {
+                    AlertUtils.makeError("Le cours existe déjà");
+                }
+            } else {
+                cours.setId(currentCours.getId());
+                if (ServiceCours.getInstance().edit(cours)) {
+                    AlertUtils.makeSuccessNotification("Cours modifié avec succés");
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_COURS);
+                } else {
+                    AlertUtils.makeError("Erreur lors de la modification du cours");
+                }
+
+                if (selectedImagePath != null) {
+                    createImageFile();
+                }
             }
         }
     }
-}
-
 
     private boolean controleDeSaisie() {
- if (salleComboBox.getValue() == null) {
-            AlertUtils.makeInformation("Veuillez choisir une salle");
+
+        Salle salle = salleComboBox.getValue();
+        if (salle == null) {
+            // Display an error message and return
+            AlertUtils.makeInformation("Veuillez sélectionner une salle.");
+
             return false;
+
         }
 
-        if (coachComboBox.getValue() == null) {
-            AlertUtils.makeInformation("Veuillez choisir un coach");
+        Coach coach = coachComboBox.getValue();
+        if (coach == null) {
+            // Display an error message and return
+            AlertUtils.makeInformation("Veuillez sélectionner une coach.");
             return false;
         }
 

@@ -8,6 +8,7 @@ package com.infantry.services;
 import com.infantry.entities.Cours;
 import com.infantry.utils.DatabaseConnection;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,6 +62,7 @@ public class ServiceCours implements IService<Cours> {
         }
 
     }
+
 
     @Override
     public void delete(int coursId) {
@@ -175,29 +177,28 @@ public class ServiceCours implements IService<Cours> {
         return false;
     }
 
-    public boolean edit(Cours cours) {
+public boolean edit(Cours cours) {
+    String request = "UPDATE cours SET nom = ?, description = ?, nb_places_total = ?, reservation = ?, image = ?, salle_id = ?, coach_id = ? WHERE id = ?";
 
-        String request = "UPDATE cours SET nom = ?, description = ?, nb_places_total = ?, reservation = ?,image = ? WHERE id = ?";
+    try {
+        preparedStatement = conn.prepareStatement(request);
+        preparedStatement.setString(1, cours.getNom());
+        preparedStatement.setString(2, cours.getDescription());
+        preparedStatement.setInt(3, cours.getNbPlacesTotal());
+        preparedStatement.setInt(4, cours.getReservation());
+        preparedStatement.setString(5, cours.getImage());
+     preparedStatement.setInt(6, cours.getSalle_id().getId());
+            preparedStatement.setInt(7, cours.getCours_id().getId());
 
-        try {
-            preparedStatement = conn.prepareStatement(request);
-            preparedStatement.setString(1, cours.getNom());
-            preparedStatement.setString(2, cours.getDescription());
+        preparedStatement.setInt(8, cours.getId());
 
-            preparedStatement.setInt(3, cours.getNbPlacesTotal());
-            preparedStatement.setInt(4, cours.getReservation());
-
-            preparedStatement.setString(5, cours.getImage());
-       
-                        preparedStatement.setInt(6, cours.getId());
-
-            preparedStatement.executeUpdate();
-            System.out.println("Cours edited");
-            return true;
-        } catch (SQLException exception) {
-            System.out.println("Error (edit) cours : " + exception.getMessage());
-        }
-        return false;
+        preparedStatement.executeUpdate();
+        System.out.println("Cours edited");
+        return true;
+    } catch (SQLException exception) {
+        System.out.println("Error (edit) cours : " + exception.getMessage());
     }
+    return false;
+}
 
 }
