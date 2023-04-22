@@ -29,6 +29,12 @@ public class Constants {
     public static final String FXML_BACK_MODEL_COACH = "/com/infantry/gui/back/coach/Model.fxml";
     public static String FXML_BACK_MANAGE_COACH="/com/infantry/gui/back/coach/Coach.fxml";
     
+    //blog
+    public static final String FXML_BACK_DISPLAY_ALL_BLOG = "/com/infantry/gui/back/blog/ShowAllBlog.fxml";
+    public static final String FXML_BACK_MODEL_BLOG = "/com/infantry/gui/back/blog/ModelBlog.fxml";
+    public static String FXML_BACK_MANAGE_BLOG="/com/infantry/gui/back/blog/Blog.fxml";
+    
+    
         //cours
 
     public static String FXML_BACK_MODEL_COURS= "/com/infantry/gui/back/cours/Model.fxml";
