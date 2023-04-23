@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -56,6 +57,18 @@
         </Button>
           <Button fx:id="btnSalle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                 mnemonicParsing="false" onAction="#afficherSalle" text="Salle" textFill="WHITE">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+         <Button fx:id="btnBlog" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#afficherBlogs" text="Blog" textFill="WHITE">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>

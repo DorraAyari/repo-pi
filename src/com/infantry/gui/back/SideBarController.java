@@ -1,3 +1,6 @@
+
+
+
 package com.infantry.gui.back;
 
 import com.infantry.MainApp;
@@ -32,17 +35,19 @@ public class SideBarController implements Initializable {
     private Button btnCours;
     @FXML
     private Button btnCoach;
-    @FXML
-    private Button btnproduit;
+     @FXML
+    private Button btnBlog;
     @FXML
     private AnchorPane mainComponent;
+    @FXML
+    private Button btnproduit;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach,btnCours,btnSalle,btnproduit
+            btnCoach,btnCours,btnSalle,btnBlog,btnproduit
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -56,6 +61,7 @@ public class SideBarController implements Initializable {
         btnCoach.setTextFill(Color.WHITE);
         btnCours.setTextFill(Color.WHITE);
         btnSalle.setTextFill(Color.WHITE);
+        btnBlog.setTextFill(Color.WHITE);
         btnproduit.setTextFill(Color.WHITE);
 
     }
@@ -74,6 +80,13 @@ public class SideBarController implements Initializable {
         btnCoach.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnCoach, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
+       @FXML
+    private void afficherProduits (ActionEvent event) {
+        goToLink(Constants.FXML_BACK_PRODUITT);
+
+        btnproduit.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnproduit, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }  
  @FXML
     private void afficherCours(ActionEvent event) {
         goToLink(Constants.FXML_BACK_DISPLAY_ALL_COURS);
@@ -87,6 +100,13 @@ public class SideBarController implements Initializable {
 
         btnSalle.setTextFill(COLOR_PRIMARY);
     }
+    @FXML
+    private void afficherBlogs(ActionEvent event) {
+        goToLink(Constants.FXML_BACK_MANAGE_BLOGA);
+
+        btnBlog.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnBlog, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
     private void goToLink(String link) {
         for (Button lien : liens) {
             lien.setTextFill(COLOR_DARK);
@@ -94,13 +114,6 @@ public class SideBarController implements Initializable {
         }
         MainWindowController.getInstance().loadInterface(link);
     }
-     @FXML
-    private void afficherProduits (ActionEvent event) {
-        goToLink(Constants.FXML_BACK_PRODUITT);
-
-        btnproduit.setTextFill(COLOR_PRIMARY);
-        Animations.animateButton(btnproduit, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
-    }  
 
     @FXML
     public void logout(ActionEvent actionEvent) {

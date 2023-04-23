@@ -60,7 +60,7 @@ import javafx.stage.FileChooser;
  */
 public class ShowAllController implements Initializable {
     public static Cours currentCours;
-    public static Produit currentProduit;
+
 @FXML
     public VBox mainVBox;
     List<Cours> listCours;

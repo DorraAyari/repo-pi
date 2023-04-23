@@ -55,7 +55,7 @@
             </cursor>
         </Button>
         <Button fx:id="btnProduit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                mnemonicParsing="false" onAction="#showProduits" text="Produit" textFill="WHITE">
+                mnemonicParsing="false" onAction="#showProduits" text="Produits" textFill="WHITE">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
