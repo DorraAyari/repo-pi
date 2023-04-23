@@ -149,9 +149,7 @@ public class ProduitUController implements Initializable {
                     AlertUtils.makeSuccessNotification("produit modifié avec succés");
                     ShowAllPController.currentproduit = null;
                     MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_PRODUITT);
-                } else {
-                    AlertUtils.makeError("Le produit existe déjà");
-                }
+                } 
             }
 
             if (selectedImagePath != null) {

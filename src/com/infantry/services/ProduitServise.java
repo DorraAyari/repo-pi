@@ -21,128 +21,164 @@ import java.util.logging.Logger;
  *
  * @author AA
  */
-public class ProduitServise implements IService<Produit>{
-     private static ProduitServise instance;
+public class ProduitServise implements IService<Produit> {
+
+    private static ProduitServise instance;
     PreparedStatement preparedStatement;
     Connection connection;
-  private Connection conn;
-  
+    private Connection conn;
+
     public ProduitServise() {
-        conn=DatabaseConnection.getInstance().getConnection();
+        conn = DatabaseConnection.getInstance().getConnection();
     }
-public static ProduitServise getInstance() {
+
+    public static ProduitServise getInstance() {
         if (instance == null) {
             instance = new ProduitServise();
         }
         return instance;
     }
- 
-      
 
     @Override
     public void insert(Produit t) {
-            String requete ="insert into produit(nom,description,prix,image)"+"values('"+t.getNom()+"','"+t.getDescription()+"','"+t.getPrix()+"','"+t.getImage()+"')";
-    try {
-        Statement ste =conn.createStatement();
-        ste.executeUpdate(requete);
-    } catch (SQLException ex) {
-        Logger.getLogger(ProduitServise.class.getName()).log(Level.SEVERE, null, ex);
+        String requete = "insert into produit(nom,description,prix,image)" + "values('" + t.getNom() + "','" + t.getDescription() + "','" + t.getPrix() + "','" + t.getImage() + "')";
+        try {
+            Statement ste = conn.createStatement();
+            ste.executeUpdate(requete);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitServise.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    }
-  
+
     public void insertPst(Produit p) {
         String requete = "insert into produit (nom,description,prix,image)"
                 + " values (?,?,?,?)";
         try {
-            PreparedStatement pst=conn.prepareStatement(requete);
+            PreparedStatement pst = conn.prepareStatement(requete);
             pst.setString(1, p.getNom());
             pst.setString(2, p.getDescription());
-           
+
             pst.setInt(3, p.getPrix());
-             pst.setString(4, p.getImage()); // set the image field
-        
+            pst.setString(4, p.getImage()); // set the image field
+
             pst.executeUpdate();
- 
+
         } catch (SQLException ex) {
             Logger.getLogger(ProduitServise.class.getName()).log(Level.SEVERE, null, ex);
         }
-             
+
     }
 
     @Override
     public boolean edit(Produit p) {
-     String req = "UPDATE produit SET nom = ?, description = ?, prix = ? image = ? WHERE id = ?";
-    try {
-        PreparedStatement pst = conn.prepareStatement(req);
-         pst.setInt(1, p.getId());
-        pst.setString(2, p.getNom());
-        pst.setString(3, p.getDescription());
-        pst.setInt(4, p.getPrix());
-        pst.setString(5, p.getImage());
-      
-        pst.executeUpdate();
-        System.out.println("produit updated successfully");
-    } catch (SQLException ex) {
-        System.err.println(ex.getMessage());
-    }
-         return false;
+        String req = "UPDATE produit SET `nom` = ?, `description` = ?, `prix` = ? , `image` = ? WHERE `id` = ? ";
+        try {
+            PreparedStatement pst = conn.prepareStatement(req);
+            pst.setString(1, p.getNom());
+            pst.setString(2, p.getDescription());
+            pst.setInt(3, p.getPrix());
+            pst.setString(4, p.getImage());
+            pst.setInt(5, p.getId());
+
+            pst.executeUpdate();
+            System.out.println("produit updated successfully");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return false;
     }
 
     @Override
     public boolean add(Produit t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (checkExist(t)) {
+            return false;
+        }
+
+        String request = "insert into produit (nom,description,prix,image)"
+                + " values (?,?,?,?)";
+        try {
+            preparedStatement = conn.prepareStatement(request);
+
+            preparedStatement.setString(1, t.getNom());
+            preparedStatement.setString(2, t.getDescription());
+            preparedStatement.setInt(3, t.getPrix());
+            preparedStatement.setString(4, t.getImage());
+
+            preparedStatement.executeUpdate();
+            System.out.println("produit added");
+            return true;
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            System.out.println("Error (add) produit : " + exception.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkExist(Produit produit) {
+        try {
+            preparedStatement = conn.prepareStatement("SELECT * FROM `produit` WHERE `nom` = ?");
+
+            preparedStatement.setString(1, produit.getNom());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException exception) {
+            System.out.println("Error (readAll) sdp : " + exception.getMessage());
+        }
+        return false;
     }
 
     @Override
     public void delete(int pId) {
-         String sql = "DELETE FROM produit WHERE id = ?";
-    try (PreparedStatement statement = conn.prepareStatement(sql)) {
-        statement.setInt(1, pId);
-        System.out.println("SQL query: " + statement.toString());
-        int rowsDeleted = statement.executeUpdate();
-        if (rowsDeleted == 0) {
-            throw new SQLException("Failed to delete produit no rows affected.");
+        String sql = "DELETE FROM produit WHERE id = ?";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, pId);
+            System.out.println("SQL query: " + statement.toString());
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted == 0) {
+                throw new SQLException("Failed to delete produit no rows affected.");
+            }
+            System.out.println(rowsDeleted + " rows deleted.");
+        } catch (SQLException ex) {
+            System.out.println("Error deleting cproduit: " + ex.getMessage());
         }
-        System.out.println(rowsDeleted + " rows deleted.");
-    } catch (SQLException ex) {
-        System.out.println("Error deleting cproduit: " + ex.getMessage());
     }
-}
 
     @Override
     public void update(Produit t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String request = "UPDATE produit SET nom = ?, description = ?, prix = ? image = ? WHERE id = ?";
+
     }
 
     @Override
     public List<Produit> readAll() {
-              List<Produit> list = new ArrayList<>();
-               String requete= "select * from produit";
+        List<Produit> list = new ArrayList<>();
+        String requete = "select * from produit";
 
-    try { 
-        Statement st = conn.createStatement();
-        ResultSet rs= st.executeQuery(requete);
-        while(rs.next()){
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
 
-            list.add(new Produit(rs.getInt("id"),
-                    rs.getString("nom"),
-                  
-                      rs.getString("description"),
-                       rs.getInt("prix"),
-                     rs.getString("image")));
+                list.add(new Produit(rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("description"),
+                        rs.getInt("prix"),
+                        rs.getString("image")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitServise.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(ProduitServise.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return list;
+        return list;
     }
 
     @Override
     public Produit readById(int id) {
-     try {
-          PreparedStatement  preparedStatement = conn.prepareStatement("SELECT * FROM produit WHERE `id` LIKE ?");
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM produit WHERE `id` LIKE ?");
 
-           preparedStatement.setInt(1, id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -150,23 +186,17 @@ public static ProduitServise getInstance() {
                         resultSet.getInt("id"),
                         resultSet.getString("nom"),
                         resultSet.getString("description"),
-                       
                         resultSet.getInt("prix"),
                         resultSet.getString("image")
-
                 );
 
-              
-                    return produit;
-             
+                return produit;
 
             }
         } catch (SQLException e) {
             System.out.println("Aucun id : " + e.getMessage());
         }
-      return null;
+        return null;
     }
 
 }
-    
-
