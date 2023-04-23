@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/utils/DatabaseConnection.java</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/entities/Cours.java</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/Coach.fxml</file>
@@ -28,6 +29,19 @@
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/CoursController.java</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/salle/SalleController.java</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/entities/Calendar.java</file>
+=======
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/BlogController.java</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/ShowAllBlogController.java</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/SideBar.fxml</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/MainWindowController.java</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/BlogA.fxml</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/ShowAllBlog.fxml</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/ModelBlog.fxml</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/AjouterBlogController.java</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/blog/Blog.fxml</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/SideBarController.java</file>
+            <file>file:/C:/Users/EMNA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/MainWindow.fxml</file>
+>>>>>>> origin/main
         </group>
     </open-files>
 </project-private>
