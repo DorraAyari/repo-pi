@@ -29,6 +29,7 @@ public class Constants {
     public static final String FXML_BACK_MODEL_COACH = "/com/infantry/gui/back/coach/Model.fxml";
     public static String FXML_BACK_MANAGE_COACH="/com/infantry/gui/back/coach/Coach.fxml";
     
+    
         //cours
 
     public static String FXML_BACK_MODEL_COURS= "/com/infantry/gui/back/cours/Model.fxml";
@@ -53,6 +54,14 @@ public class Constants {
     public static String FXML_BACK_MANAGE_COURSA="/com/infantry/gui/back/cours/CoursA.fxml";
 
     
-
+//PRODUIT 
+    public static final String FXML_BACK_PRODUITT = "/com/infantry/gui/back/produit/ShowAllProduit.fxml";
+     public static final String FXML_BACK_MODEL= "/com/infantry/gui/back/produit/ModelProduit.fxml";
+    public static String FXML_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitU.fxml";
+      public static String FXML_MANAGE_PRODUITA="/com/infantry/gui/back/produit/ProduitA.fxml";
     
+    //produitfront
+       public static String FXML_FRONT_LISTPRODUIT="/com/infantry/gui/front/produit/ShowProduit.fxml";
+    public static String FXML_FRONT_MODEL_PRODUIT= "/com/infantry/gui/front/produit/ModelP.fxml";
+        public static String FXML_BACK_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitA.fxml";
 }

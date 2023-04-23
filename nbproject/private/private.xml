@@ -3,33 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/utils/DatabaseConnection.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/entities/Cours.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/front/user/MyProfileController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/Coach.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/CoachController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/services/SalleService.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/user/Manage.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/SideBar.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/utils/Constants.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/ShowAll.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/ShowAllController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/user/ShowAll.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/entities/Coach.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/services/UserService.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/user/Model.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/Cours.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/SideBarController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/user/ManageController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/services/ServiceCours.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/ShowAllController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/Model.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/entities/Salle.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/user/ShowAllController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/ShowAll.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/CoursController.java</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/coach/Model.fxml</file>
-            <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/services/CoachService.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/utils/Constants.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/produit/ProduitA.fxml</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/produit/ShowAllPController.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/produit/Controller.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/coach/ShowAllController.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/coach/ShowAll.fxml</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/coach/AjouterCoachController.java</file>
         </group>
     </open-files>
 </project-private>

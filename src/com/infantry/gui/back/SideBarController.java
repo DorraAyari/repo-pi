@@ -33,6 +33,8 @@ public class SideBarController implements Initializable {
     @FXML
     private Button btnCoach;
     @FXML
+    private Button btnproduit;
+    @FXML
     private AnchorPane mainComponent;
 
     @Override
@@ -40,7 +42,7 @@ public class SideBarController implements Initializable {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach,btnCours,btnSalle
+            btnCoach,btnCours,btnSalle,btnproduit
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -54,6 +56,7 @@ public class SideBarController implements Initializable {
         btnCoach.setTextFill(Color.WHITE);
         btnCours.setTextFill(Color.WHITE);
         btnSalle.setTextFill(Color.WHITE);
+        btnproduit.setTextFill(Color.WHITE);
 
     }
 
@@ -91,6 +94,13 @@ public class SideBarController implements Initializable {
         }
         MainWindowController.getInstance().loadInterface(link);
     }
+     @FXML
+    private void afficherProduits (ActionEvent event) {
+        goToLink(Constants.FXML_BACK_PRODUITT);
+
+        btnproduit.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnproduit, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }  
 
     @FXML
     public void logout(ActionEvent actionEvent) {

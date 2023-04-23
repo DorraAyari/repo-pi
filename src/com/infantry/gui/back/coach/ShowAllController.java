@@ -44,13 +44,10 @@ import javafx.scene.Node;
 public class ShowAllController implements Initializable {
     public static Coach currentCoach;
 @FXML
-private ScrollPane scrollPane;
-@FXML
     public VBox mainVBox;
     List<Coach> listCoach;
   @FXML
     public Text topText;
-    @FXML
     public Button addButton;
     @FXML
     public Button btnAjout;
