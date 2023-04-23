@@ -65,3 +65,4 @@ public class Constants {
     public static String FXML_FRONT_MODEL_PRODUIT= "/com/infantry/gui/front/produit/ModelP.fxml";
         public static String FXML_BACK_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitA.fxml";
 }
+ 
