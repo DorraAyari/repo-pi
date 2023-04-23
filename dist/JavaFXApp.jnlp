@@ -8,15 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication6.jar" size="10941106" download="eager" />
+    <jar href="JavaFXApplication6.jar" size="10940122" download="eager" />
     <jar href="lib/argon2-jvm-2.10.1.jar" size="414227" download="eager" />
     <jar href="lib/argon2-jvm-nolibs-2.10.1.jar" size="17803" download="eager" />
     <jar href="lib/jna-5.8.0.jar" size="1729586" download="eager" />
     <jar href="lib/mysql-connector.jar" size="2415211" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="JavaFXApp" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="com.infantry.MainApp"  name="JavaFXApp" />
   <update check="always"/>
 </jnlp>
