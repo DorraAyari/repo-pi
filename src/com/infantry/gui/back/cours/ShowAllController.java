@@ -8,6 +8,7 @@ package com.infantry.gui.back.cours;
 import com.infantry.MainApp;
 import com.infantry.entities.Coach;
 import com.infantry.entities.Cours;
+import com.infantry.entities.Produit;
 import com.infantry.entities.Salle;
 import com.infantry.gui.back.MainWindowController;
 import com.infantry.services.ServiceCours;
@@ -59,7 +60,7 @@ import javafx.stage.FileChooser;
  */
 public class ShowAllController implements Initializable {
     public static Cours currentCours;
-    public static Object currentBlog;
+
 @FXML
     public VBox mainVBox;
     List<Cours> listCours;
