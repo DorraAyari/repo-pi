@@ -11,7 +11,7 @@ public class DatabaseConnection {
 
     private DatabaseConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:8889/infantry", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/infantry", "root", "");
             System.out.println("Connexion etablie");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -41,13 +41,15 @@ public class SideBarController implements Initializable {
     private AnchorPane mainComponent;
     @FXML
     private Button btnproduit;
+    @FXML
+    private Button btnRec;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach,btnCours,btnSalle,btnBlog,btnproduit
+            btnCoach,btnCours,btnSalle,btnBlog,btnproduit,btnRec
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -63,7 +65,7 @@ public class SideBarController implements Initializable {
         btnSalle.setTextFill(Color.WHITE);
         btnBlog.setTextFill(Color.WHITE);
         btnproduit.setTextFill(Color.WHITE);
-
+        btnRec.setTextFill(Color.WHITE);
     }
 
     @FXML
@@ -118,5 +120,14 @@ public class SideBarController implements Initializable {
     @FXML
     public void logout(ActionEvent actionEvent) {
         MainApp.getInstance().logout();
+    }
+
+    @FXML
+    private void afficherReclamations(ActionEvent event) {
+                goToLink(Constants.FXML_BACK_RECLAMATION);
+
+        btnRec.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnRec, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+
     }
 }

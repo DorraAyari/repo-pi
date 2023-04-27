@@ -30,10 +30,10 @@ public class TopBarController implements Initializable {
     private Button btnCoach;
 @FXML
     private Button btnCours;
-@FXML
-    private Button btnProduit;
     @FXML
     private AnchorPane mainComponent;
+    @FXML
+    private Button btnRec;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +77,6 @@ public class TopBarController implements Initializable {
         btnCours.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnProfile, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
-@FXML
     private void showProduits(ActionEvent event) {
         goToLink(Constants.FXML_FRONT_MY_COURSLIST);
 
@@ -98,4 +97,14 @@ public class TopBarController implements Initializable {
     public void logout(ActionEvent actionEvent) {
         MainApp.getInstance().logout();
     }
+
+    @FXML
+    private void ShowReclamation(ActionEvent event) {
+               
+        goToLink(Constants.FXML_FRONT_LISTRECLAMTION);
+
+        btnCours.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnProfile, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+
 }

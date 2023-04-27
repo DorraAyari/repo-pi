@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infantry.gui.back.Reclamation.ReponseFXMLController">
+   <children>
+      <TableView fx:id="TableReclamation" layoutX="14.0" layoutY="30.0" onMouseClicked="#LoadData" prefHeight="200.0" prefWidth="474.0">
+         <columns>
+            <TableColumn fx:id="idT" prefWidth="75.0" text="id" visible="false" />
+            <TableColumn fx:id="NomT" editable="false" minWidth="0.0" prefWidth="87.0" text="Nom" />
+            <TableColumn fx:id="PrenomT" prefWidth="63.0" text="Prenom" />
+            <TableColumn fx:id="EmailT" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="MessageT" prefWidth="248.0" text="Message" />
+         </columns>
+      </TableView>
+      <Label layoutX="47.0" layoutY="258.0" text="Reponse :" />
+      <Button layoutX="152.0" layoutY="297.0" mnemonicParsing="false" onAction="#Reponse" styleClass="button-design" stylesheets="@design.css" text="Repondre" />
+      <TextField fx:id="inputReponse" layoutX="111.0" layoutY="259.0" styleClass="textfield-design" stylesheets="@design.css" />
+      <TableView fx:id="TableReponse" layoutX="513.0" layoutY="30.0" onMouseClicked="#LoadRep" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="idRepT" prefWidth="75.0" text="id" visible="false" />
+          <TableColumn fx:id="reponseT" prefWidth="199.0" text="Reponse" />
+        </columns>
+      </TableView>
+      <Label fx:id="idReclamation" layoutX="598.0" layoutY="130.0" visible="false" />
+      <Button layoutX="577.0" layoutY="246.0" mnemonicParsing="false" onAction="#Supprimer" styleClass="button-design" stylesheets="@design.css" text="Supprimer" />
+      <Button layoutX="234.0" layoutY="297.0" mnemonicParsing="false" onAction="#Modifier" styleClass="button-design" stylesheets="@design.css" text="Modifier" />
+      <Label fx:id="idreplabel" layoutX="295.0" layoutY="380.0" visible="false" />
+      <Label fx:id="nbRepLabel" layoutX="363.0" layoutY="338.0" />
+   </children>
+</AnchorPane>
