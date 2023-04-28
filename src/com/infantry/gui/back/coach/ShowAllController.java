@@ -14,6 +14,8 @@ import static com.infantry.gui.back.user.ShowAllController.currentUser;
 import com.infantry.services.UserService;
 import com.infantry.utils.AlertUtils;
 import com.infantry.utils.Constants;
+import java.awt.Desktop;
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +37,7 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.*;
-import javafx.scene.Node;
+
 /**
  * FXML Controller class
  *
@@ -63,7 +65,7 @@ public class ShowAllController implements Initializable {
 
 @FXML
 private void ajouter(ActionEvent event) throws IOException {
-    MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_COACHA);
+    MainWindowController.getInstance().loadInterface("/com/infantry/gui/back/coach/Coach.fxml");
 }
 
 
