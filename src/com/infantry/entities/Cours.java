@@ -5,19 +5,45 @@
  */
 package com.infantry.entities;
 
+import com.infantry.services.ServiceCours;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author dorraayari
  */
 public class Cours {
+ // autres champs et méthodes
+
+    private boolean btnreserver = false;
+  private List<Cours> coursReserves; // ajout de la liste de cours réservés
+    
+    // constructeurs, getters, setters, etc.
+
+    public boolean hasReservedCours(Cours cours) {
+        return coursReserves.contains(cours);
+    }
+
+    public void reserveCours(Cours cours) {
+        coursReserves.add(cours);
+    }
+    public boolean hasUser(User user) {
+        boolean result = userList.contains(user);
+        btnreserver = result;
+        return result;
+    }
+
+    public boolean hasUserReserved() {
+        return btnreserver;
+    }
     int id,nb_places_total,reservation;
     String nom,image,description;
     Salle salle_id;
@@ -26,8 +52,26 @@ public class Cours {
     int coach_idd;
  String coach_nom;
     String salle_nom;
-    public Cours() {
+
+
+    public boolean isBtnreserver() {
+        return btnreserver;
     }
+
+    public void setBtnreserver(boolean btnreserver) {
+        this.btnreserver = btnreserver;
+    }
+     private List<User> userList = new ArrayList<>();
+
+    public void addUser(User user) {
+        userList.add(user);
+    }
+
+  
+
+
+
+
 public Cours(int id, String nom, String image, String description, int nb_places_total, 
              int reservation, int coach_id, String coach_nom, int salle_id, String salle_nom) {
     this.id = id;
