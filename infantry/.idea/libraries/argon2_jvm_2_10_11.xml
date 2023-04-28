@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="argon2-jvm-2.10.11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dependencies/argon2-jvm-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/argon2-jvm-nolibs-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/itextpdf-5.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/jna-5.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/mysql-connector.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/poi-3.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependencies/TrayTester.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
