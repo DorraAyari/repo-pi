@@ -99,4 +99,8 @@ public class User  {
         this.photo = photo;
     }
 
+    public void setUser_id(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

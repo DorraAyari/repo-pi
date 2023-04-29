@@ -7,7 +7,9 @@ package com.infantry.gui.front.Reclamation;
 
 import com.infantry.entities.Pdf;
 import com.infantry.entities.Reclamation;
+import com.infantry.entities.User;
 import com.infantry.services.ServiceReclamation;
+import com.infantry.services.UserService;
 import com.infantry.utils.DatabaseConnection;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -17,6 +19,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +32,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +40,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.util.StringConverter;
 import org.controlsfx.control.Notifications;
 import static sun.plugin.javascript.navig.JSType.Image;
 
@@ -44,6 +50,13 @@ import static sun.plugin.javascript.navig.JSType.Image;
  * @author User
  */
 public class ReclamationFXMLController implements Initializable {
+@FXML
+private ComboBox<User> userComboBox;
+    @FXML
+    private ComboBox<User> useremailComboBox;
+
+@FXML
+private ComboBox<User> userprenomComboBox;
 
     @FXML
     private TextField nom;
@@ -77,12 +90,61 @@ public class ReclamationFXMLController implements Initializable {
     private Label idreclabel;
     @FXML
     private TextField Recherche;
+   
+   
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        UserService userService = new UserService();
+    ObservableList<User> userList = FXCollections.observableArrayList(userService. getAll());
+    Collections.sort(userList, Comparator.comparing(User::getNom)); // trier par nom
+    
+    nom.setText(userList.get(0).getNom());
+    prenom.setText(userList.get(0).getPrenom());
+    email.setText(userList.get(0).getEmail());
+    userComboBox.setItems(userList);
+     userComboBox.setConverter(new StringConverter<User>() {
+        @Override
+        public String toString(User user) {
+            return user.getNom(); // retourne le nom de la user
+        }
+
+        @Override
+        public User fromString(String nom) {
+            // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
+            return null;
+        }
+    });
+     useremailComboBox.setItems(userList);
+     useremailComboBox.setConverter(new StringConverter<User>() {
+        @Override
+        public String toString(User user) {
+            return user.getEmail(); // retourne le nom de la user
+        }
+
+        @Override
+        public User fromString(String email) {
+            // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
+            return null;
+        }
+    });
+      userprenomComboBox.setItems(userList);
+     userprenomComboBox.setConverter(new StringConverter<User>() {
+        @Override
+        public String toString(User user) {
+            return user.getPrenom(); // retourne le nom de la user
+        }
+
+        @Override
+        public User fromString(String prenom) {
+            // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
+            return null;
+        }
+    });
+
         try {
             // TODO
 
@@ -163,6 +225,9 @@ public class ReclamationFXMLController implements Initializable {
 
     @FXML
     private void Ajouter(ActionEvent event) throws SQLException {
+        User user =userComboBox.getValue();
+        User selectedUser = userComboBox.getSelectionModel().getSelectedItem();
+
                 String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         if (!email.getText().matches(emailRegex)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -176,7 +241,8 @@ public class ReclamationFXMLController implements Initializable {
                     if(Validchamp(nom) && Validchamp(prenom)  && Validchamp(message))
         {
 
-         Reclamation r = new Reclamation(nom.getText(), prenom.getText() , email.getText(),message.getText());
+         Reclamation r = new Reclamation(nom.getText(), prenom.getText() , email.getText(),message.getText(),user);
+         userComboBox.getSelectionModel().clearSelection();
          sr.insert(r);
          Notifications.create()
         .title("reclamation ajouté")
