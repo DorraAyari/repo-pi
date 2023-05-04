@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
+<?import javafx.scene.control.TextField?>
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="800.0" prefHeight="500.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../../utils/MainStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infantry.gui.back.salle.ShowAllController">
     
     <AnchorPane style="-fx-background-color: #F36100;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,15 +21,18 @@
             </Text>
 
         </StackPane>
-        <Button fx:id="btnAjout" layoutX="513.0" layoutY="20.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="37.0" prefWidth="255.0" styleClass="success-button" text="Ajouter un salle" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="513.0" AnchorPane.rightAnchor="32.0" />
-
+                              <Button fx:id="btnAjout" layoutX="577.0" layoutY="20.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="37.0" prefWidth="209.0" styleClass="success-button" text="Ajouter une salle" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="577.0" AnchorPane.rightAnchor="14.0" />
+                                 <Button fx:id="ToPdf" layoutX="400.0" layoutY="25.0" mnemonicParsing="false" onAction="#ToPdf" prefHeight="27.0" prefWidth="136.0" styleClass="success-button" text="telecharger pdf" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
     </AnchorPane>
     <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" pannable="true" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <opaqueInsets>
             <Insets />
         </opaqueInsets>
         <AnchorPane>
-            <VBox fx:id="mainVBox" layoutY="-2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <VBox fx:id="mainVBox" layoutY="35.0" prefHeight="459.0" prefWidth="784.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+      <Button layoutX="445.0" layoutY="1.0" onAction="#sortByNameAscending" prefHeight="27.0" prefWidth="114.0" styleClass="success-button" text="Trier par nom asc" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <Button layoutX="586.0" layoutY="1.0" onAction="#sortByNameDescending" prefHeight="27.0" prefWidth="114.0" styleClass="success-button" text="Trier par nom des" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+   <TextField fx:id="searchField" layoutX="21.0" layoutY="1.0" onKeyReleased="#onSearchFieldKeyReleased" prefHeight="26.0" prefWidth="257.0" promptText="Chercher par nom" />
         </AnchorPane>
     </ScrollPane>
 </AnchorPane>

@@ -156,7 +156,7 @@ public class AjouterCoursController implements Initializable {
         currentCours = ShowAllController.currentCours;
 
       
-            topText.setText("Ajouter coach");
+            topText.setText("Ajouter cours");
             btnAjout.setText("Ajouter");
         
 
