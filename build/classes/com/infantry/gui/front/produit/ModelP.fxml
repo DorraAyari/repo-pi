@@ -47,6 +47,17 @@
                                 </font>
                             </Text>
                         </VBox>
+                        <VBox prefHeight="160.0" prefWidth="104.0">
+                <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </HBox.margin>
+             
+                <Button fx:id="AjouterButton"    maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="light-button" text="Commander">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+            </VBox>
                      
                     </HBox>
                   

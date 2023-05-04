@@ -71,7 +71,8 @@ public class Constants {
     //produitfront
        public static String FXML_FRONT_LISTPRODUIT="/com/infantry/gui/front/produit/ShowProduit.fxml";
     public static String FXML_FRONT_MODEL_PRODUIT= "/com/infantry/gui/front/produit/ModelP.fxml";
-        public static String FXML_BACK_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitA.fxml";
-
+//command
+    public static String FXML_FRONT_LISTCommand="/com/infantry/gui/back/command/ShowCommand.fxml";
+    public static String FXML_FRONT_MODEL_COMMAND= "/com/infantry/gui/back/command/ModelCommand.fxml";
 }
  

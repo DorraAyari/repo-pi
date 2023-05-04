@@ -9,7 +9,11 @@ import com.infantry.entities.Produit;
 import com.infantry.gui.back.MainWindowController;
 import com.infantry.services.ProduitServise;
 import com.infantry.utils.Constants;
+import com.mysql.cj.xdevapi.Session;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -17,7 +21,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +33,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -56,7 +63,9 @@ public class ShowAllPController implements Initializable {
 
     public Button addButton;
 
-
+@FXML
+    private TextField searchField;
+    
    
     // other fields and methods
 
@@ -94,7 +103,27 @@ private void ajouter(ActionEvent event) throws IOException {
             mainVBox.getChildren().add(stackPane);
         }
     }
+private void displaySearchResults(List<Produit> searchResults) {
+    listproduit = searchResults; // mettre à jour la liste globale de blogs pour refléter les résultats de recherche
+    displayData(); // afficher les résultats de recherche
+}
+       
+@FXML
+public void searchButtonClicked(ActionEvent event) {
+    String searchText = searchField.getText();
+    List<Produit> searchResults = performSearch(searchText); // appel de votre méthode de recherche
+    displaySearchResults(searchResults);
+}
 
+private List<Produit> performSearch(String searchText) {
+    if (searchText == null || searchText.isEmpty()) {
+        return listproduit; // retourne la liste complète si la recherche est vide
+    }
+    String searchLower = searchText.toLowerCase(); // convertir la requête en minuscules pour une correspondance insensible à la casse
+    return listproduit.stream()
+        .filter(produit -> produit.getNom().toLowerCase().contains(searchLower))
+        .collect(Collectors.toList());
+}
     public Parent makeCoachModel(
             Produit produit
     ) {
@@ -147,7 +176,46 @@ private void ajouter(ActionEvent event) throws IOException {
         displayData();
     }
     }
-    private void specialAction( Produit  produit) {
-        // implementation
-    }
+     @FXML
+    private void ToPdf(ActionEvent event) {
+        
+         try {
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("C:\\Users\\AA\\Documents\\javafx"), "UTF-8"));
+          ProduitServise cr = new   ProduitServise();;
+
+            List<Produit> metiers = cr.readAll();
+            writer.write("id,nom,Description,prix,image\n");
+            for (Produit obj : metiers) {
+               writer.write(obj.getId());
+                writer.write(",");
+                writer.write(obj.getNom());
+                writer.write(",");
+                writer.write(obj.getDescription());
+                writer.write(",");
+               
+                writer.write(obj.getPrix());
+                writer.write(",");
+                writer.write(obj.getImage());
+                writer.write(",");
+            
+                writer.write("\n");
+
+            }
+            writer.flush();
+            writer.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("EXCEL ");
+
+            alert.setHeaderText("EXCEL");
+            alert.setContentText("Enregistrement effectué avec succès!");
+
+            alert.showAndWait();
+        } catch (Exception e) {
+            System.out.println("Failed to send message: " + e.getMessage());
+        }
+         
+        }
+    
+
+     
 }

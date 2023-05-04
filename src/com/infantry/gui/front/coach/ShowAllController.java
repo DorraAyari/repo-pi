@@ -45,6 +45,7 @@ private ScrollPane scrollPane;
     public Button addButton;
     @FXML
     public Button btnAjout;
+    
     // other fields and methods
 
     @Override
