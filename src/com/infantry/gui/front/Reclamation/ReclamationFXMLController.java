@@ -31,9 +31,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,8 +54,9 @@ import static sun.plugin.javascript.navig.JSType.Image;
 public class ReclamationFXMLController implements Initializable {
 @FXML
 private ComboBox<User> userComboBox;
-    @FXML
-    private ComboBox<User> useremailComboBox;
+    
+@FXML
+private ComboBox<User> useremailComboBox;
 
 @FXML
 private ComboBox<User> userprenomComboBox;
@@ -90,15 +93,20 @@ private ComboBox<User> userprenomComboBox;
     private Label idreclabel;
     @FXML
     private TextField Recherche;
+    @FXML
+    private Pagination pagination;
    
-   
+    private final static int rowPerPage= 10;
+    private final  TableView<Reclamation> table = createTable();
+    private final ObservableList<Reclamation> dataa = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        UserService userService = new UserService();
+        
+    UserService userService = new UserService();
     ObservableList<User> userList = FXCollections.observableArrayList(userService. getAll());
     Collections.sort(userList, Comparator.comparing(User::getNom)); // trier par nom
     
@@ -142,12 +150,11 @@ private ComboBox<User> userprenomComboBox;
         public User fromString(String prenom) {
             // Pas besoin d'implémenter cette méthode car elle ne sera pas utilisée
             return null;
-        }
-    });
+            }
+        });
 
         try {
             // TODO
-
             Aff();
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -178,9 +185,56 @@ private ComboBox<User> userprenomComboBox;
             
             TableReclamation.setItems(data);
             RechercheAV();
+            pagination.setPageFactory(this::createPage);
+
     }
-    
-            public void RechercheAV(){
+        private Node createPage(int pageIndex){
+        int fromIndex = pageIndex * rowPerPage;
+        int toIndex = Math.min(fromIndex + rowPerPage,data.size());
+        table.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
+        return table;
+    }
+     
+        
+       private TableView<Reclamation> createTable(){
+                                      
+           try {
+            con = DatabaseConnection.getInstance().getConnection();
+            ste = con.createStatement();
+            dataa.clear();
+
+            ResultSet res = ste.executeQuery("select * from Reclamation");
+            while(res.next()){
+                Reclamation f=new Reclamation(res.getInt(1), res.getString("nom"),res.getString("prenom"), res.getString("email"), res.getString("message"));
+                dataa.add(f);
+            }
+
+        } catch (Exception e) {
+                //Logger.getLogger(tab)
+        }
+                      
+        TableView<Reclamation> table = new TableView<>() ;
+        TableColumn<Reclamation,Integer> idTT = new TableColumn<>("id");
+        TableColumn<Reclamation,String> NomTT = new TableColumn<>("nom");
+        TableColumn<Reclamation,String> PrenomTT = new TableColumn<>("prenom");
+        TableColumn<Reclamation,String> EmailTT = new TableColumn<>("email");
+        TableColumn<Reclamation,String> MessageTT = new TableColumn<>("message");
+                   
+            idTT.setCellValueFactory(new PropertyValueFactory<>("id"));
+            NomTT.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            PrenomTT.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+            EmailTT.setCellValueFactory(new PropertyValueFactory<>("email"));
+            MessageTT.setCellValueFactory(new PropertyValueFactory<>("message"));
+
+            table.setItems(dataa);
+               
+            table.getColumns().addAll(idTT,NomTT,PrenomTT,EmailTT,MessageTT);
+            
+            return table;
+    }
+
+            
+       public void RechercheAV(){
                 // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Reclamation> filteredData = new FilteredList<>(data, b -> true);
 		
@@ -228,7 +282,8 @@ private ComboBox<User> userprenomComboBox;
         User user =userComboBox.getValue();
         User selectedUser = userComboBox.getSelectionModel().getSelectedItem();
 
-                String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+               
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         if (!email.getText().matches(emailRegex)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Format email incorrect");
