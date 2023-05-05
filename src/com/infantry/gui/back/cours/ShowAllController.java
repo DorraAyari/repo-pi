@@ -11,11 +11,15 @@ import com.infantry.entities.Cours;
 import com.infantry.entities.Produit;
 import com.infantry.entities.Salle;
 import com.infantry.gui.back.MainWindowController;
+import com.infantry.services.CoachService;
 import com.infantry.services.ServiceCours;
 import com.infantry.utils.AlertUtils;
 import com.infantry.utils.Constants;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -29,10 +33,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +52,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -64,6 +71,10 @@ public class ShowAllController implements Initializable {
 @FXML
     public VBox mainVBox;
     List<Cours> listCours;
+  @FXML
+private TextField searchField;
+@FXML
+private Button searchButton;
 
      
     
@@ -90,23 +101,114 @@ public class ShowAllController implements Initializable {
 
 
     void displayData() {
+        
+    String searchTerm = searchField.getText();
+    List<Cours> coursToDisplay = listCours;
+    if (!searchTerm.isEmpty()) {
+        coursToDisplay = ServiceCours.getInstance().searchByName(searchTerm);
+    }
+        Collections.reverse(coursToDisplay);
+
         mainVBox.getChildren().clear();
 
         Collections.reverse(listCours);
 
-        if (!listCours.isEmpty()) {
-            for (Cours cours : listCours) {
-                mainVBox.getChildren().add(makeCoursModel(cours));
-            }
-        } else {
-            StackPane stackPane = new StackPane();
-            stackPane.setAlignment(Pos.CENTER);
-            stackPane.setPrefHeight(200);
-            stackPane.getChildren().add(new Text("Aucune donnée"));
-            mainVBox.getChildren().add(stackPane);
+   if (!coursToDisplay.isEmpty()) {
+        for (Cours cours : listCours) {
+            mainVBox.getChildren().add(makeCoursModel(cours));
         }
+    } else {
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.CENTER);
+        stackPane.setPrefHeight(200);
+        stackPane.getChildren().add(new Text("Aucune donnée"));
+        mainVBox.getChildren().add(stackPane);
     }
-       
+}
+    @FXML
+private void onSearchFieldKeyReleased(KeyEvent event) {
+    displayData();
+}
+
+     void displayData(boolean ascending) {
+    mainVBox.getChildren().clear();
+
+    String searchTerm = searchField.getText();
+    List<Cours> coursToDisplay = listCours;
+    if (!searchTerm.isEmpty()) {
+        coursToDisplay = ServiceCours.getInstance().searchByName(searchTerm);
+    }
+
+    Comparator<Cours> comparator = Comparator.comparing(Cours::getNom);
+    if (!ascending) {
+        comparator = comparator.reversed();
+    }
+    coursToDisplay = coursToDisplay.stream().sorted(comparator).collect(Collectors.toList());
+
+    if (!coursToDisplay.isEmpty()) {
+        for (Cours cours : coursToDisplay) {
+            mainVBox.getChildren().add(makeCoursModel(cours));
+        }
+    } else {
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.CENTER);
+        stackPane.setPrefHeight(200);
+        stackPane.getChildren().add(new Text("Aucune donnée"));
+        mainVBox.getChildren().add(stackPane);
+    }
+}
+      @FXML
+private void sortByNameAscending(ActionEvent event) {
+    displayData(true);
+}
+
+@FXML
+private void sortByNameDescending(ActionEvent event) {
+    displayData(false);
+}
+
+@FXML
+    private void ToPdf(ActionEvent event) {
+        
+         try {
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("/Users/dorraayari/Downloads/javafx/myfile.txt"), "UTF-8"));
+          ServiceCours cr = new   ServiceCours();;
+
+            List<Cours> metiers = cr.readAll();
+            writer.write("id,nom,description,nb_places_total,reservation,,image\n");
+            for (Cours obj : metiers) {
+               writer.write(obj.getId());
+                writer.write(",");
+                writer.write(obj.getNom());
+                writer.write(",");
+                writer.write(obj.getDescription());
+                writer.write(",");
+               
+                writer.write(obj.getNbPlacesTotal());
+                writer.write(",");
+                  writer.write(obj.getReservation());
+                writer.write(",");
+              
+                writer.write(obj.getImage());
+                writer.write(",");
+            
+                writer.write("\n");
+
+            }
+            writer.flush();
+            writer.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("EXCEL ");
+
+            alert.setHeaderText("EXCEL");
+            alert.setContentText("Enregistrement effectué avec succès!");
+
+            alert.showAndWait();
+        } catch (Exception e) {
+            System.out.println("Failed to send message: " + e.getMessage());
+        }
+         
+        }    
    public Parent makeCoursModel(Cours cours) {
     Parent parent = null;
     try {

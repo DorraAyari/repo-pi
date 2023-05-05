@@ -13,13 +13,14 @@
     
     <AnchorPane style="-fx-background-color: #F36100;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <StackPane prefHeight="70.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="0.0">
-            <Text fx:id="topText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit" textAlignment="JUSTIFY" textOrigin="CENTER">
+            <Text fx:id="topText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits" textAlignment="JUSTIFY" textOrigin="CENTER">
                 <font>
                     <Font name="Arial Bold" size="23.0" />
                 </font>
             </Text>
 
         </StackPane>
+        
       <Button fx:id="btnAjout" layoutX="513.0" layoutY="20.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="37.0" prefWidth="255.0" styleClass="success-button" text="Ajouter un produit" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="513.0" AnchorPane.rightAnchor="32.0" />
     </AnchorPane>
     <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" pannable="true" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -30,4 +31,5 @@
             <VBox fx:id="mainVBox" layoutY="-2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
     </ScrollPane>
+    <Button fx:id="btnpdf" layoutX="513.0" layoutY="20.0" mnemonicParsing="false" onAction="#ToPdf" prefHeight="37.0" prefWidth="255.0" styleClass="success-button" text="PDF" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="513.0" AnchorPane.rightAnchor="32.0" />
 </AnchorPane>

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.activation.DataSource;
 
 /**
@@ -34,6 +35,13 @@ public class CoachService implements IService<Coach>{
     public CoachService() {
         conn=DatabaseConnection.getInstance().getConnection();
     }
+ public List<Coach> searchByName(String name) {
+    return readAll().stream()
+        .filter(c -> c.getNom().toLowerCase().contains(name.toLowerCase()))
+        .collect(Collectors.toList());
+}
+
+
 public static CoachService getInstance() {
         if (instance == null) {
             instance = new CoachService();

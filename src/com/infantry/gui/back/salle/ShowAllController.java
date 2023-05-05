@@ -10,14 +10,19 @@ import com.infantry.entities.Salle;
 import com.infantry.gui.back.MainWindowController;
 import com.infantry.services.SalleService;
 import com.infantry.utils.Constants;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +32,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -41,6 +48,12 @@ import javafx.scene.text.Text;
  */
 public class ShowAllController implements Initializable {
     public static Salle currentSalle;
+      @FXML
+private TextField searchField;
+@FXML
+private Button searchButton;
+
+   
     @FXML
     public VBox mainVBox;
     List<Salle> listSalle;
@@ -61,23 +74,60 @@ public class ShowAllController implements Initializable {
         displayData();
     }
     void displayData() {
+         String searchTerm = searchField.getText();
+    List<Salle> salleToDisplay = listSalle;
+    if (!searchTerm.isEmpty()) {
+        salleToDisplay =SalleService.getInstance().searchByName(searchTerm);
+    }
+            Collections.reverse(salleToDisplay);
+
         mainVBox.getChildren().clear();
 
         Collections.reverse(listSalle);
 
-        if (!listSalle.isEmpty()) {
-            for (Salle salle : listSalle) {
-                mainVBox.getChildren().add(makeSalleModel(salle));
-            }
-        } else {
-            StackPane stackPane = new StackPane();
-            stackPane.setAlignment(Pos.CENTER);
-            stackPane.setPrefHeight(200);
-            stackPane.getChildren().add(new Text("Aucune donnée"));
-            mainVBox.getChildren().add(stackPane);
+   if (!salleToDisplay.isEmpty()) {
+        for (Salle salle : listSalle) {
+            mainVBox.getChildren().add(makeSalleModel(salle));
         }
+    } else {
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.CENTER);
+        stackPane.setPrefHeight(200);
+        stackPane.getChildren().add(new Text("Aucune donnée"));
+        mainVBox.getChildren().add(stackPane);
     }
-    
+}
+      @FXML
+private void onSearchFieldKeyReleased(KeyEvent event) {
+    displayData();
+}
+     void displayData(boolean ascending) {
+    mainVBox.getChildren().clear();
+
+    String searchTerm = searchField.getText();
+    List<Salle> salleToDisplay = listSalle;
+    if (!searchTerm.isEmpty()) {
+        salleToDisplay = SalleService.getInstance().searchByName(searchTerm);
+    }
+
+    Comparator<Salle> comparator = Comparator.comparing(Salle::getNom);
+    if (!ascending) {
+        comparator = comparator.reversed();
+    }
+    salleToDisplay = salleToDisplay.stream().sorted(comparator).collect(Collectors.toList());
+
+    if (!salleToDisplay.isEmpty()) {
+        for (Salle salle : salleToDisplay) {
+            mainVBox.getChildren().add(makeSalleModel(salle));
+        }
+    } else {
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.CENTER);
+        stackPane.setPrefHeight(200);
+        stackPane.getChildren().add(new Text("Aucune donnée"));
+        mainVBox.getChildren().add(stackPane);
+    }
+}
 @FXML
 private void ajouter(ActionEvent event) throws IOException {
     MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_MANAGE_SALLEA);
@@ -101,7 +151,51 @@ private void ajouter(ActionEvent event) throws IOException {
     }
     return parent;
 }
+ @FXML
+private void sortByNameAscending(ActionEvent event) {
+    displayData(true);
+}
 
+@FXML
+private void sortByNameDescending(ActionEvent event) {
+    displayData(false);
+}
+
+@FXML
+    private void ToPdf(ActionEvent event) {
+        
+         try {
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("/Users/dorraayari/Downloads/javafx/myfile.txt"), "UTF-8"));
+          SalleService cr = new   SalleService();;
+
+            List<Salle> metiers = cr.readAll();
+            writer.write("id,nom,description\n");
+            for (Salle obj : metiers) {
+               writer.write(obj.getId());
+                writer.write(",");
+                writer.write(obj.getNom());
+                writer.write(",");
+                writer.write(obj.getDescription());
+                writer.write(",");
+              
+            
+                writer.write("\n");
+
+            }
+            writer.flush();
+            writer.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("EXCEL ");
+
+            alert.setHeaderText("EXCEL");
+            alert.setContentText("Enregistrement effectué avec succès!");
+
+            alert.showAndWait();
+        } catch (Exception e) {
+            System.out.println("Failed to send message: " + e.getMessage());
+        }
+         
+        }    
     private void modifierSalle(Salle salle) {
         currentSalle = salle;
 

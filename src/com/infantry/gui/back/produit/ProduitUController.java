@@ -29,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML ProduitUController class
@@ -112,6 +113,7 @@ public class ProduitUController implements Initializable {
 
     @FXML
     private void modifier(ActionEvent event) {
+        
 
         if (controleDeSaisie()) {
 
@@ -156,6 +158,11 @@ public class ProduitUController implements Initializable {
                 createImageFile();
             }
         }
+         Notifications.create()
+        .title("produit modifier")
+        .text("Le produit a été modifié avec succès.")
+        .showInformation();
+       
     }
 
     private boolean controleDeSaisie() {

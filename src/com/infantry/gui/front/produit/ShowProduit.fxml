@@ -14,26 +14,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="800.0" prefHeight="500.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../../../utils/MainStyle.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infantry.gui.front.produit.ShowProduitController">
-    
-        <AnchorPane style="-fx-background-color: #F36100;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                AnchorPane.topAnchor="0.0">
+   
+    <AnchorPane style="-fx-background-color: #F36100;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
         <StackPane prefHeight="70.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="0.0">
             <Text fx:id="topText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE"
-                  strokeWidth="0.0" text="Liste coachs" textAlignment="JUSTIFY" textOrigin="CENTER">
+                  strokeWidth="0.0" text="Liste Produits" textAlignment="JUSTIFY" textOrigin="CENTER">
                 <font>
                     <Font name="Arial Bold" size="23.0"/>
                 </font>
             </Text>
         </StackPane>
-        
+      
+        <HBox style="-fx-padding: 10px;" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+            <TextField fx:id="searchField" layoutX="10" layoutY="10" prefWidth="200" />
+<Button text="Rechercher" layoutX="220" layoutY="10" onAction="#searchButtonClicked" />
+        </HBox>
     </AnchorPane>
-   
-    
-    
-    
-    
-    
-    
+
     <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" pannable="true" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <opaqueInsets>
             <Insets />
@@ -43,5 +41,6 @@
         </AnchorPane>
     </ScrollPane>
 </AnchorPane>
+
 
 

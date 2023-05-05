@@ -8,16 +8,84 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="JavaFXApplication6.jar" size="11138807" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="JavaFXApplication6.jar" size="11541722" download="eager" />
+    <jar href="lib/activation-1.1.jar" size="62983" download="eager" />
+    <jar href="lib/annotations-2.20.53.jar" size="13241" download="eager" />
+    <jar href="lib/apache-client-2.20.53.jar" size="74544" download="eager" />
+    <jar href="lib/argon2-jvm-2.10.1.jar" size="414227" download="eager" />
+    <jar href="lib/argon2-jvm-nolibs-2.10.1.jar" size="17803" download="eager" />
+    <jar href="lib/auth-2.20.53.jar" size="204874" download="eager" />
+    <jar href="lib/aws-core-2.20.53.jar" size="150785" download="eager" />
+    <jar href="lib/aws-json-protocol-2.20.53.jar" size="114713" download="eager" />
+    <jar href="lib/commons-codec-1.15.jar" size="353793" download="eager" />
+    <jar href="lib/commons-io-2.7.jar" size="276413" download="eager" />
+    <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/endpoints-spi-2.20.53.jar" size="13157" download="eager" />
+    <jar href="lib/eventstream-1.0.1.jar" size="30193" download="eager" />
+    <jar href="lib/http-client-spi-2.20.53.jar" size="81262" download="eager" />
+    <jar href="lib/httpclient-4.5.13.jar" size="780321" download="eager" />
+    <jar href="lib/httpcore-4.4.13.jar" size="328593" download="eager" />
+    <jar href="lib/jackson-annotations-2.14.0.jar" size="76091" download="eager" />
+    <jar href="lib/jackson-core-2.14.0.jar" size="458975" download="eager" />
+    <jar href="lib/jackson-databind-2.14.0.jar" size="1618273" download="eager" />
+    <jar href="lib/jackson-dataformat-xml-2.14.0.jar" size="130374" download="eager" />
+    <jar href="lib/jackson-datatype-jsr310-2.14.0.jar" size="122014" download="eager" />
+    <jar href="lib/javax.mail-1.6.1.jar" size="654100" download="eager" />
+    <jar href="lib/jjwt-api-0.11.2.jar" size="78784" download="eager" />
+    <jar href="lib/jjwt-impl-0.11.2.jar" size="78853" download="eager" />
+    <jar href="lib/jjwt-jackson-0.11.2.jar" size="8400" download="eager" />
+    <jar href="lib/jna-5.8.0.jar" size="1729586" download="eager" />
+    <jar href="lib/json-20220320.jar" size="70939" download="eager" />
+    <jar href="lib/json-utils-2.20.53.jar" size="30054" download="eager" />
+    <jar href="lib/metrics-spi-2.20.53.jar" size="27287" download="eager" />
+    <jar href="lib/mysql-connector.jar" size="2415211" download="eager" />
+    <jar href="lib/netty-buffer-4.1.86.Final.jar" size="305047" download="eager" />
+    <jar href="lib/netty-codec-4.1.86.Final.jar" size="348123" download="eager" />
+    <jar href="lib/netty-codec-http-4.1.86.Final.jar" size="651016" download="eager" />
+    <jar href="lib/netty-codec-http2-4.1.86.Final.jar" size="480042" download="eager" />
+    <jar href="lib/netty-common-4.1.86.Final.jar" size="654571" download="eager" />
+    <jar href="lib/netty-handler-4.1.86.Final.jar" size="540539" download="eager" />
+    <jar href="lib/netty-nio-client-2.20.53.jar" size="281971" download="eager" />
+    <jar href="lib/netty-resolver-4.1.86.Final.jar" size="37774" download="eager" />
+    <jar href="lib/netty-transport-4.1.86.Final.jar" size="488341" download="eager" />
+    <jar href="lib/netty-transport-classes-epoll-4.1.86.Final.jar" size="142249" download="eager" />
+    <jar href="lib/netty-transport-native-unix-common-4.1.86.Final.jar" size="43686" download="eager" />
+    <jar href="lib/profiles-2.20.53.jar" size="49233" download="eager" />
+    <jar href="lib/protocol-core-2.20.53.jar" size="35176" download="eager" />
+    <jar href="lib/reactive-streams-1.0.3.jar" size="11369" download="eager" />
+    <jar href="lib/regions-2.20.53.jar" size="802213" download="eager" />
+    <jar href="lib/sdk-core-2.20.53.jar" size="782628" download="eager" />
+    <jar href="lib/slf4j-api-1.7.30.jar" size="41472" download="eager" />
+    <jar href="lib/slf4j-api-2.0.7.jar" size="63635" download="eager" />
+    <jar href="lib/slf4j-simple-2.0.7.jar" size="15972" download="eager" />
+    <jar href="lib/sms-2.20.53.jar" size="1077354" download="eager" />
+    <jar href="lib/stax2-api-4.2.1.jar" size="195909" download="eager" />
+    <jar href="lib/third-party-jackson-core-2.20.53.jar" size="384655" download="eager" />
+    <jar href="lib/twilio-9.5.0.jar" size="4924532" download="eager" />
+    <jar href="lib/utils-2.20.53.jar" size="182052" download="eager" />
+    <jar href="lib/woodstox-core-6.4.0.jar" size="1586060" download="eager" />
+=======
+    <jar href="JavaFXApplication6.jar" size="11179230" download="eager" />
+>>>>>>> 10ebedebb379eb2bbc2bc0cb3e94cf1910e34eea
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\argon2-jvm-2.10.1.jar" size="414227" download="eager" />
     <jar href="lib\argon2-jvm-nolibs-2.10.1.jar" size="17803" download="eager" />
     <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
+<<<<<<< HEAD
     <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\jna-5.8.0.jar" size="1729586" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.18.jar" size="2330539" download="eager" />
     <jar href="lib\mysql-connector.jar" size="2415211" download="eager" />
+=======
+    <jar href="lib\jna-5.8.0.jar" size="1729586" download="eager" />
+    <jar href="lib\mysql-connector.jar" size="2415211" download="eager" />
+>>>>>>> najwa
+>>>>>>> 10ebedebb379eb2bbc2bc0cb3e94cf1910e34eea
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="JavaFXApp" >
     <param name="requiredFXVersion" value="8.0+"/>

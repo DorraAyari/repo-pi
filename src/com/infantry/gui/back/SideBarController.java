@@ -44,12 +44,18 @@ public class SideBarController implements Initializable {
     @FXML
     private Button btnRec;
 
+    private Button btncommand;
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach,btnCours,btnSalle,btnBlog,btnproduit,btnRec
+
+
+            btnCoach,btnCours,btnSalle,btnBlog,btnproduit,btncommand
+
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -85,9 +91,12 @@ public class SideBarController implements Initializable {
        @FXML
     private void afficherProduits (ActionEvent event) {
         goToLink(Constants.FXML_BACK_PRODUITT);
+    }
+        @FXML
+    private void afficherCommands (ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_LISTCommand);
 
-        btnproduit.setTextFill(COLOR_PRIMARY);
-        Animations.animateButton(btnproduit, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    
     }  
  @FXML
     private void afficherCours(ActionEvent event) {
