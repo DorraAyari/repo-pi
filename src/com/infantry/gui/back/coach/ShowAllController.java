@@ -53,13 +53,10 @@ private TextField searchField;
 private Button searchButton;
 
 @FXML
-private ScrollPane scrollPane;
-@FXML
     public VBox mainVBox;
     List<Coach> listCoach;
   @FXML
     public Text topText;
-    @FXML
     public Button addButton;
     @FXML
     public Button btnAjout;

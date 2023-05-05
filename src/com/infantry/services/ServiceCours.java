@@ -137,8 +137,13 @@ public void displayData() {
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
 
-                list.add(new Cours(rs.getInt("id"), rs.getString("nom"), rs.getString("image"),
-                        rs.getString("description"), rs.getInt("nb_places_total"), rs.getInt("reservation"),
+                list.add(new Cours(rs.getInt("id"),
+                        rs.getString("nom"), 
+                        rs.getString("image"),
+                        rs.getString("description"), 
+                        rs.getInt("nb_places_total"), 
+                        
+                        rs.getInt("reservation"),
                         rs.getInt("coach_id"), rs.getString("coach_nom"), rs.getInt("salle_id"), rs.getString("salle_nom")
                 ));
             }

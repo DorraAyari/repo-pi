@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/front/coach/Model.fxml</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/front/coach/ShowAll.fxml</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/front/user/MyProfileController.java</file>
@@ -52,6 +53,10 @@
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/salle/AjouterSalleController.java</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/cours/ShowAll.fxml</file>
             <file>file:/Users/dorraayari/NetBeansProjects/infantry-2/src/com/infantry/gui/back/blog/BlogController.java</file>
+=======
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/back/produit/ShowAllPController.java</file>
+            <file>file:/C:/Users/AA/Documents/NetBeansProjects/repo-pi/src/com/infantry/gui/front/produit/ShowProduitController.java</file>
+>>>>>>> najwa
         </group>
     </open-files>
 </project-private>

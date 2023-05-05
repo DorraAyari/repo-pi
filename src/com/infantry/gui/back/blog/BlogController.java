@@ -156,7 +156,6 @@ public class BlogController implements Initializable {
 
                 if (BlogService.getInstance().edit(blog)) {
                     AlertUtils.makeSuccessNotification("Blog modifié avec succés");
-                    ShowAllController.currentBlog = null;
                     MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_BLOG);
                 } else {
                     AlertUtils.makeError("Le blog existe déjà");

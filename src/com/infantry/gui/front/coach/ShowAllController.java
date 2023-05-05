@@ -55,6 +55,7 @@ public class ShowAllController implements Initializable {
     public Button addButton;
     @FXML
     public Button btnAjout;
+    
     // other fields and methods
 
     @Override
@@ -138,7 +139,7 @@ public class ShowAllController implements Initializable {
     ) {
         Parent parent = null;
         try {
-            parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_FRONT_MODEL_COACH)));
+            parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_FRONT_MODEL_PRODUIT)));
 
             HBox innerContainer = ((HBox) ((AnchorPane) ((AnchorPane) parent).getChildren().get(0)).getChildren().get(0));
             ((Text) innerContainer.lookup("#nomText")).setText("Nom : " + coach.getNom());

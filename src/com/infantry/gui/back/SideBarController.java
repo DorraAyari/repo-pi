@@ -1,3 +1,6 @@
+
+
+
 package com.infantry.gui.back;
 
 import com.infantry.MainApp;
@@ -36,13 +39,18 @@ public class SideBarController implements Initializable {
     private Button btnBlog;
     @FXML
     private AnchorPane mainComponent;
+    @FXML
+    private Button btnproduit;
+    @FXML
+    private Button btncommand;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         liens = new Button[]{
                 btnUsers,
-            btnCoach,btnCours,btnSalle,btnBlog
+            btnCoach,btnCours,btnSalle,btnBlog,btnproduit,btncommand
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -57,6 +65,7 @@ public class SideBarController implements Initializable {
         btnCours.setTextFill(Color.WHITE);
         btnSalle.setTextFill(Color.WHITE);
         btnBlog.setTextFill(Color.WHITE);
+        btnproduit.setTextFill(Color.WHITE);
 
     }
 
@@ -74,6 +83,16 @@ public class SideBarController implements Initializable {
         btnCoach.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnCoach, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
+       @FXML
+    private void afficherProduits (ActionEvent event) {
+        goToLink(Constants.FXML_BACK_PRODUITT);
+    }
+        @FXML
+    private void afficherCommands (ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_LISTCommand);
+
+    
+    }  
  @FXML
     private void afficherCours(ActionEvent event) {
         goToLink(Constants.FXML_BACK_DISPLAY_ALL_COURS);
