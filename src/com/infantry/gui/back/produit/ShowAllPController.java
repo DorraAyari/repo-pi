@@ -176,45 +176,7 @@ private List<Produit> performSearch(String searchText) {
         displayData();
     }
     }
-     @FXML
-    private void ToPdf(ActionEvent event) {
-        
-         try {
-            PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("C:\\Users\\AA\\Documents\\javafx"), "UTF-8"));
-          ProduitServise cr = new   ProduitServise();;
-
-            List<Produit> metiers = cr.readAll();
-            writer.write("id,nom,Description,prix,image\n");
-            for (Produit obj : metiers) {
-               writer.write(obj.getId());
-                writer.write(",");
-                writer.write(obj.getNom());
-                writer.write(",");
-                writer.write(obj.getDescription());
-                writer.write(",");
-               
-                writer.write(obj.getPrix());
-                writer.write(",");
-                writer.write(obj.getImage());
-                writer.write(",");
-            
-                writer.write("\n");
-
-            }
-            writer.flush();
-            writer.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("EXCEL ");
-
-            alert.setHeaderText("EXCEL");
-            alert.setContentText("Enregistrement effectué avec succès!");
-
-            alert.showAndWait();
-        } catch (Exception e) {
-            System.out.println("Failed to send message: " + e.getMessage());
-        }
-         
-        }
+    
     
 
      
