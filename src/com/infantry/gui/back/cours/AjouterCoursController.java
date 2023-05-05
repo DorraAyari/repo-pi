@@ -177,7 +177,6 @@ public class AjouterCoursController implements Initializable {
             Cours cours = new Cours(nomField.getText(), descriptionField.getText(),
                     Integer.parseInt(nbPlacesTotalField.getText()), Integer.parseInt(reservationField.getText()),
                     imagePath);
-            
             Salle salle = salleComboBox.getValue();
             if (salle == null) {
                 // Display an error message and return

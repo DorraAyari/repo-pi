@@ -198,5 +198,25 @@ public class ProduitServise implements IService<Produit> {
         }
         return null;
     }
+    public Produit getProduitById(int id) {
+        String requete = "select * from produit where id = ?";
+        Produit blog =  null;
+        try{
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            BlogService rss = new BlogService();
+           
+            if(rs.next()){
+            //reservation = new Reservation(rs.getInt(1), rs.getString(5), rs.getDate(2).toLocalDate(), rs.getString(3), rs.getString(4),rs.getInt(6),rs.getInt(7),ts.readByID(rs.getInt(8)),rs.getString(9));
+            blog = new Produit(rs.getString(1), rs.getString(2),rs.getInt(3),rs.getString(4));
+
+            }
+        }catch (SQLException ex) {
+            System.out.println("Error retrieving command: " + ex.getMessage());
+        }
+        return blog;
+    }
+    
 
 }

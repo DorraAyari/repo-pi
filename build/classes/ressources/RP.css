@@ -1,0 +1,134 @@
+.menuGB{
+    -fx-background-size: 500px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 500px;
+    -fx-pref-height: 300px;
+}
+
+menuGR{
+    -fx-background-size: 300px 310px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 300px;
+-fx-pref-height: 300px;
+}
+
+
+.AjR{
+    -fx-background-size: 600px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 400px;
+}
+.AjP{
+    -fx-background-size: 600px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 400px;
+}
+.add{
+-fx-background-image: url('../ressources/plus.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.view{
+-fx-background-image: url('../ressources/view.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.back{
+-fx-background-image: url('../ressources/return.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+#header{
+    -fx-font-size: 30px;
+
+}
+.label {
+    -fx-font-size: 14px;
+
+}
+.affR{
+    -fx-background-size: 520px 420px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 520px;
+    -fx-pref-height: 420px;
+
+}
+.affP{
+    -fx-background-size: 575px 420px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 575px;
+    -fx-pref-height: 420px;
+
+}
+.qrC{
+-fx-background-image: url('../ressources/qrC.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.search{
+-fx-background-image: url('../ressources/search.png');
+    -fx-background-size: 30px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+}
+.modify{
+-fx-background-image: url('../ressources/edit.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.delete{
+-fx-background-image: url('../ressources/delete.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.pdf{
+-fx-background-image: url('../ressources/pdf.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.consult{
+-fx-background-image: url('../ressources/consult.png');
+    -fx-background-size: 20px 20px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+.consultP{
+    -fx-background-size: 600px 420px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 420px;
+}

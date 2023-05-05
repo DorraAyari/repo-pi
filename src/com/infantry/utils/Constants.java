@@ -69,9 +69,28 @@ public class Constants {
       public static String FXML_MANAGE_PRODUITA="/com/infantry/gui/back/produit/ProduitA.fxml";
     
     //produitfront
-       public static String FXML_FRONT_LISTPRODUIT="/com/infantry/gui/front/produit/ShowProduit.fxml";
+    public static String FXML_FRONT_LISTPRODUIT="/com/infantry/gui/front/produit/ShowProduit.fxml";
     public static String FXML_FRONT_MODEL_PRODUIT= "/com/infantry/gui/front/produit/ModelP.fxml";
-        public static String FXML_BACK_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitA.fxml";
+    public static String FXML_BACK_MANAGE_PRODUIT="/com/infantry/gui/back/produit/ProduitA.fxml";
+        
+    //Reclamation_Back
+    public static final String FXML_BACK_RECLAMATION = "/com/infantry/gui/back/Reclamation/ReponseFXML.fxml";
+    
+    //Reclamation_Front
+    public static String FXML_FRONT_LISTRECLAMTIO= "/com/infantry/gui/front/Reclamation/ReclamationFXML.fxml";
+      //command
+    public static String FXML_FRONT_LISTCommand="/com/infantry/gui/back/command/ShowCommand.fxml";
+    public static String FXML_FRONT_MODEL_COMMAND= "/com/infantry/gui/back/command/ModelCommand.fxml";  
+    
+    
+    
+    public static String FXML_FRONT_MY_PACK= "/gui/AfficherPackage.fxml";
+    public static String FXML_FRONT_MY_RESERVATION= "/gui/AjouterReservation.fxml";
+    
+    
+    
+    
+
 
 }
  

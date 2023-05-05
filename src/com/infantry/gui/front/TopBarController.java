@@ -26,20 +26,26 @@ public class TopBarController implements Initializable {
 
     @FXML
     private Button btnProfile;
+    
+    @FXML
+    private Button btnReservation;
+      @FXML
+    private Button btnPack;
  @FXML
     private Button btnCoach;
 @FXML
     private Button btnCours;
-@FXML
-    private Button btnProduit;
     @FXML
     private AnchorPane mainComponent;
-
+    @FXML
+    private Button btnRec;
+ @FXML
+    private Button btnProduit;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         liens = new Button[]{
-                btnProfile,btnCoach,btnCours
+                btnProfile,btnCoach,btnCours, btnReservation,btnPack,btnRec,btnProduit
 
         };
 
@@ -68,23 +74,39 @@ public class TopBarController implements Initializable {
         goToLink(Constants.FXML_FRONT_MY_COCHLIST);
 
         btnCoach.setTextFill(COLOR_PRIMARY);
-        Animations.animateButton(btnProfile, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+        Animations.animateButton(btnCoach, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
  @FXML
     private void showCours(ActionEvent event) {
         goToLink(Constants.FXML_FRONT_MY_COURSLIST);
 
         btnCours.setTextFill(COLOR_PRIMARY);
-        Animations.animateButton(btnProfile, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+        Animations.animateButton(btnCours, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
-@FXML
-    private void showProduits(ActionEvent event) {
-        goToLink(Constants.FXML_FRONT_MY_COURSLIST);
+    @FXML
+    private void showPackage(ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_MY_PACK);
 
-        btnCours.setTextFill(COLOR_PRIMARY);
+        btnPack.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnPack, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+    
+    
+     @FXML
+    private void showReservation(ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_MY_RESERVATION);
+
+        btnReservation.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnReservation, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+      @FXML
+    private void showProduits(ActionEvent event) {
+        goToLink(Constants. FXML_FRONT_LISTPRODUIT);
+
+        btnProduit.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnProfile, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
-        
+          
         
     private void goToLink(String link) {
         for (Button lien : liens) {
@@ -98,4 +120,14 @@ public class TopBarController implements Initializable {
     public void logout(ActionEvent actionEvent) {
         MainApp.getInstance().logout();
     }
+
+    @FXML
+    private void ShowReclamation(ActionEvent event) {
+               
+        goToLink(Constants.FXML_FRONT_LISTRECLAMTIO);
+
+        btnRec.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnRec, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+
 }

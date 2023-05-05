@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Alert;
 import javax.activation.DataSource;
 
 /**
@@ -63,28 +62,8 @@ public class ServiceCours implements IService<Cours> {
         }
 
     }
-public void displayData() {
-    List<Cours> listCours = this.readAll();
-    System.out.println("Liste des cours :");
-    for (Cours cours : listCours) {
-        System.out.println(cours.toString());
-    }
-}
 
-  public void reserverCours(Cours cours) {
-    if (cours.getNbPlacesTotal() > cours.getReservation()) {
-        cours.setReservation(cours.getReservation() + 1);
-        ServiceCours.getInstance().update(cours);
-        displayData();
-    } else {
-        // afficher un message d'erreur si le cours est complet
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur de réservation");
-        alert.setHeaderText(null);
-        alert.setContentText("Le cours est complet, vous ne pouvez pas réserver de place.");
-        alert.showAndWait();
-    }
-}
+
     @Override
     public void delete(int coursId) {
         String sql = "DELETE FROM cours WHERE id = ?";
@@ -199,7 +178,7 @@ public void displayData() {
     }
 
 public boolean edit(Cours cours) {
-    String request = "UPDATE cours SET nom = ?, description = ?, nb_places_total = ?, reservation = ?, image = ? WHERE id = ?";
+    String request = "UPDATE cours SET nom = ?, description = ?, nb_places_total = ?, reservation = ?, image = ?, salle_id = ?, coach_id = ? WHERE id = ?";
 
     try {
         preparedStatement = conn.prepareStatement(request);
@@ -208,10 +187,10 @@ public boolean edit(Cours cours) {
         preparedStatement.setInt(3, cours.getNbPlacesTotal());
         preparedStatement.setInt(4, cours.getReservation());
         preparedStatement.setString(5, cours.getImage());
-//     preparedStatement.setInt(6, cours.getSalle_id().getId());
-       //     preparedStatement.setInt(7, cours.getCours_id().getId());
+     preparedStatement.setInt(6, cours.getSalle_id().getId());
+            preparedStatement.setInt(7, cours.getCours_id().getId());
 
-        preparedStatement.setInt(6, cours.getId());
+        preparedStatement.setInt(8, cours.getId());
 
         preparedStatement.executeUpdate();
         System.out.println("Cours edited");

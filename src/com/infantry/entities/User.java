@@ -2,7 +2,6 @@ package com.infantry.entities;
 
 
 import com.infantry.utils.Constants;
-import java.util.List;
 
 public class User  {
 
@@ -100,16 +99,8 @@ public class User  {
         this.photo = photo;
     }
 
-     private List<Cours> coursReserves; // ajout de la liste de cours réservés
-    
-    // constructeurs, getters, setters, etc.
-
-    public boolean hasReservedCours(Cours cours) {
-        return coursReserves.contains(cours);
-    }
-
-    public void reserveCours(Cours cours) {
-        coursReserves.add(cours);
+    public void setUser_id(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

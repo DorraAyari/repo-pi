@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="menuGP" stylesheets="@../ressources/RP.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuGestionPackageController">
+
+    <padding>
+        <Insets bottom="50" left="50" right="50" top="50" />
+    </padding>
+    <children>
+      <Pane prefHeight="208.0" prefWidth="349.0" styleClass="menuGB">
+         <children>
+          
+              <Button layoutX="40.0" layoutY="79.0" onAction="#gererPackages" prefHeight="34.0" prefWidth="420.0" style="-fx-background-color: #1E90FF;" text="Gerer Package" />
+			  <Button layoutX="40.0" layoutY="135.0" onAction="#afficheStat" prefHeight="34.0" prefWidth="420.0" style="-fx-background-color: #1E90FF;" text="Statistiques" />
+				  
+              <Button layoutX="40.0" layoutY="187.0" onAction="#retournerPackages" prefHeight="34.0" prefWidth="420.0" style="-fx-background-color: #1E90FF;" text="Retourner" />
+         </children>
+      </Pane>
+    </children>
+</VBox>
